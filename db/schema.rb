@@ -24,12 +24,4 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_01_174004) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "todos", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.date "due_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 end

@@ -18,10 +18,14 @@
         <td><%= product.name %></td>
         <td><%= product.amount %></td>
         <td><%= product.marketer %></td>
-        <td><%= product.expiration.strftime("%m/%d/%Y") %></td>
+        <td><%= product.expiration %></td>
         <td><%= product.hold %></td>
       </tr>
     <% end %>
   </tbody>
  
 </table>
+
+<p>
+  <%= link_to "Submit New Product", new_product_path, class: 'btn btn-primary' %>
+</p>
