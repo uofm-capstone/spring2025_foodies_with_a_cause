@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -36,4 +37,18 @@ Product.create!(
   marketer: "Kroger Inc",
   expiration: Date.new(2024, 11, 7),
   hold: "7 days"
+
+farmer1 = UserFarmer.create!(
+  email: 'farmer@email.com',
+  password: 'password'
+)
+
+market1 = UserMarket.create!(
+  email: 'market@email.com',
+  password: 'password'
+)
+
+distributor1 = UserDistributor.create!(
+  email: 'distributor@email.com',
+  password: 'password'
 )

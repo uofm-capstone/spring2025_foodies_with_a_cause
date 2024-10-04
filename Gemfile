@@ -73,6 +73,7 @@ group :test do
   gem 'webdrivers'
 end
 
+
 # Disconnects all connections to PostgreSQL db when running rails db:reset
 gem 'pgreset', group: %i[development test]
 
@@ -87,3 +88,6 @@ gem 'bootswatch', github: 'thomaspark/bootswatch', tag: 'v5.2.3'
 
 # Bootstrap-styled rails form helpers
 gem 'bootstrap_form', '~> 5.2.3'
+
+gem 'devise'
+
