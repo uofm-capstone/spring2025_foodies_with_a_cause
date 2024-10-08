@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: products
+#
+#  id         :bigint           not null, primary key
+#  amount     :string
+#  expiration :date
+#  hold       :string
+#  marketer   :string
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  name: MyString
+  amount: MyString
+  marketer: MyString
+  expiration: 2024-10-01
+  hold: MyString
+
+two:
+  name: MyString
+  amount: MyString
+  marketer: MyString
+  expiration: 2024-10-01
+  hold: MyString
