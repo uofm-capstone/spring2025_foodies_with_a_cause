@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Waste to Worth Farms</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav>
+      <%= link_to root_path, class: "logo" do %>
+        <%= image_tag 'logo.jpg', alt: "Waste to Worth Farms Logo" %>
+      <% end %>
+      <ul>
+        <li><%= link_to "About Us", about_path %></li>
+        <li><%= link_to "Our Services", services_path %></li>
+        <li><%= link_to "Get Involved", contact_path %></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Turning Waste Into Worth</h1>
+    <p>Join us in converting food waste from stores into valuable resources for sustainable farming.</p>
+    <%= link_to "Learn More", about_path, class: "cta-button" %>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature">
+      <h2>Biowaste to Feed</h2>
+      <p>We collect surplus food and process it into nutritious animal feed, reducing waste and supporting local farms.</p>
+    </div>
+    <div class="feature">
+      <h2>Compost Creation</h2>
+      <p>Our program transforms organic waste into rich compost that nourishes the soil and promotes sustainable agriculture.</p>
+    </div>
+    <div class="feature">
+      <h2>Natural Fertilizer</h2>
+      <p>By recycling food waste, we produce eco-friendly fertilizers that help farmers grow healthier, more resilient crops.</p>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <blockquote>
+      "Waste to Worth Farms has been a game-changer for our farm. We’re getting affordable, high-quality feed, and reducing landfill waste at the same time." - Farmer Joe
+    </blockquote>
+    <blockquote>
+      "It’s amazing to see food waste from our store being transformed into valuable resources. This initiative is a win-win for everyone!" - Store Manager Sarah
+    </blockquote>
+  </section>
+
+  <!-- Call-to-Action Section -->
+  <section class="cta-secondary">
+    <h2>Ready to make an impact?</h2>
+    <p>Get involved today and help us create a greener, more sustainable future.</p>
+    <%= link_to "Sign Up Now", signup_path, class: "cta-button" %>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <%= Time.now.year %> Waste to Worth Farms. All rights reserved.</p>
+    <ul>
+      <li><%= link_to "Privacy Policy", privacy_path %></li>
+      <li><%= link_to "Terms of Service", terms_path %></li>
+    </ul>
+    <p>Follow us on:</p>
+    <ul>
+      <li><%= link_to "Facebook", "https://facebook.com", target: "_blank" %></li>
+      <li><%= link_to "Instagram", "https://instagram.com", target: "_blank" %></li>
+      <li><%= link_to "Twitter", "https://twitter.com", target: "_blank" %></li>
+    </ul>
+  </footer>
+</body>
+</html>

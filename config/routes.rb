@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
-  
-  get 'home', to: 'pages#home', as: 'home'
 
+  root 'home#home'
+  get 'about', to: 'pages#about'
+  get 'services', to: 'pages#services'
+  get 'contact', to: 'pages#contact'
+  get 'signup', to: 'users#new'
+
+  get 'privacy', to: 'pages#privacy', as: 'privacy'
+  get 'terms', to: 'pages#terms', as: 'terms'
 
 end
+
+
+
