@@ -1,7 +1,9 @@
 class PagesController < ApplicationController
-
-  def home
-    render :home
+  def privacy
   end
 
+  def terms
+  end
+
+  
 end
