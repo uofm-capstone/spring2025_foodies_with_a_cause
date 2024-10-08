@@ -37,6 +37,7 @@ Product.create!(
   marketer: "Kroger Inc",
   expiration: Date.new(2024, 11, 7),
   hold: "7 days"
+)
 
 farmer1 = UserFarmer.create!(
   email: 'farmer@email.com',
