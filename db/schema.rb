@@ -60,5 +60,4 @@ ActiveRecord::Schema[7.0].define(version: 2024_10_01_182244) do
     t.index ["reset_password_token"], name: "index_user_markets_on_reset_password_token", unique: true
   end
 
->>>>>>> main
 end
