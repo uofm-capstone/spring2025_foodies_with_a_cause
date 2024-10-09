@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :user_markets
   devise_for :user_farmers
   
-  root 'home#home'
+  # root 'home#home'
+  root to: redirect('/home')
+  get 'home', to: 'home#home', as: 'home'
   get 'about', to: 'pages#about'
   get 'services', to: 'pages#services'
   get 'contact', to: 'pages#contact'
@@ -17,7 +19,6 @@ Rails.application.routes.draw do
   get 'products/new', to: 'products#new', as: 'new_product'
   get 'products/:id', to: 'products#show', as: 'product'
 
->>>>>>> main
 
 end
 
