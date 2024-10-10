@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
 
-  devise_for :user_distributors
-  devise_for :user_markets
-  devise_for :user_farmers
   
   # root 'home#home'
   root to: redirect('/home')

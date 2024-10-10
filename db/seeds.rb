@@ -39,17 +39,7 @@ Product.create!(
   hold: "7 days"
 )
 
-UserFarmer.create!(
-  email: 'farmer@email.com',
-  password: 'password'
-)
-
-UserMarket.create!(
-  email: 'market@email.com',
-  password: 'password'
-)
-
-UserDistributor.create!(
-  email: 'distributor@email.com',
-  password: 'password'
+User.create!(
+  email: "user@email.com",
+  password: "password"
 )
