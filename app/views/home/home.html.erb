@@ -28,42 +28,32 @@
     }
 
     /* Navbar Styles */
-    header {
-      background-color: #2c3e50;
+
+    .navbar {
+      background-color: #2c3e50; /* Dark blue/navy background */
       padding: 20px 0;
     }
 
-    nav {
-      display: flex;
-      justify-content: center; /* Centers the logo */
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative; /* Allows positioning of the nav items */
-    }
-
-    nav .nav-links {
-      position: absolute;
-      right: 0; /* Aligns the nav links to the right */
-      display: flex;
-      gap: 20px;
-    }
-
-    nav ul {
-      list-style-type: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    nav ul li {
-      display: inline;
-    }
-
-    nav ul li a {
+    .navbar .navbar-nav .nav-link {
       color: white;
       font-weight: bold;
       font-size: 1rem;
     }
+
+    .navbar .navbar-nav .nav-link:hover {
+      color: #3498db;
+    }
+
+    .navbar .navbar-brand {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar .navbar-brand:hover {
+      color: #3498db;
+    }
+
 
     .logo img {
       height: 100px; /* Adjusted logo size */
@@ -192,23 +182,76 @@
 <body>
 
   <!-- Navbar -->
-  <header>
-    <nav>
-      <%= link_to root_path, class: "logo" do %>
-        <%= image_tag 'logo.jpg', alt: "Waste to Worth Farms Logo" %>
-      <% end %>
-      
-      <!-- Wrapper for the navigation links -->
-      <div class="nav-links">
-        <ul>
-          <li><%= link_to "Market Hub", products_path %></li>
-          <li><%= link_to "About Us", about_path %></li>
-          <li><%= link_to "Our Services", services_path %></li>
-          <li><%= link_to "Get Involved", contact_path %></li>
+  <nav class="navbar navbar-expand-lg navbar-light bg-navy">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+  
+      <a class="navbar-brand" href="#">ProduceBridge</a>
+  
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse"
+          id="navbarSupportedContent">
+  
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <%= link_to 'Home', home_path,
+                        class: "nav-link #{active_class(home_path)}" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Market Hub', products_path,
+              class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'About Us', about_path,
+              class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Our Services", services_path,
+              class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Get Involved", contact_path,
+              class: "nav-link" %>
+          </li>
         </ul>
+  
+        <ul class="navbar-nav">
+          <%= link_to root_path, class: "logo" do %>
+            <%= image_tag 'logo.jpg', alt: "Waste to Worth Farms Logo" %>
+          <% end %>
+        
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Hi, #{current_user.email}", edit_user_registration_path,
+                          class: "nav-link #{active_class(edit_user_registration_path)} btn btn-link" %>
+            </li>
+            <li class="nav-item">
+              <%= button_to 'Sign Out', destroy_user_session_path,
+                          method: :delete, data: { turbo: false }, class: 'nav-link btn btn-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign In', new_user_session_path,
+                          class: "nav-link #{active_class(new_user_session_path)} btn btn-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign Up', new_user_registration_path,
+                          class: "nav-link #{active_class(new_user_registration_path)} btn btn-link" %>
+            </li>
+          <% end %>
+        </ul>
+  
       </div>
-    </nav>
-  </header>
+  
+    </div>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero">
