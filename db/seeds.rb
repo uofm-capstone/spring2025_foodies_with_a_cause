@@ -39,17 +39,17 @@ Product.create!(
   hold: "7 days"
 )
 
-farmer1 = UserFarmer.create!(
+UserFarmer.create!(
   email: 'farmer@email.com',
   password: 'password'
 )
 
-market1 = UserMarket.create!(
+UserMarket.create!(
   email: 'market@email.com',
   password: 'password'
 )
 
-distributor1 = UserDistributor.create!(
+UserDistributor.create!(
   email: 'distributor@email.com',
   password: 'password'
 )
