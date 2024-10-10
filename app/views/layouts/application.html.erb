@@ -35,6 +35,14 @@
                         class: "nav-link #{active_class(edit_user_registration_path)} btn btn-link" %>
           </li>
           <li class="nav-item">
+            <% User.all.each do |user| %>
+              <tr>
+                <%= link_to "Profile", user_path(user),
+                        class: "nav-link #{active_class(user_path(user))} btn btn-link" %>
+              </tr>
+            <% end %>
+          </li>
+          <li class="nav-item">
             <%= button_to 'Sign Out', destroy_user_session_path,
                         method: :delete, data: { turbo: false }, class: 'nav-link btn btn-link' %>
           </li>

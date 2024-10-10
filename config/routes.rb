@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
 
   
   # root 'home#home'
@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   get 'services', to: 'pages#services'
   get 'contact', to: 'pages#contact'
-  get 'signup', to: 'users#new'
+  get 'users', to: 'users#index', as: 'users'
+  get 'users/:id', to: 'users#show', as: 'user'
 
   get 'privacy', to: 'pages#privacy', as: 'privacy'
   get 'terms', to: 'pages#terms', as: 'terms'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   post 'products', to: 'products#create'
   get 'products/new', to: 'products#new', as: 'new_product'
   get 'products/:id', to: 'products#show', as: 'product'
+
 
 
 end
