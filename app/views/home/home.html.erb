@@ -7,6 +7,187 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: #3498db;
+    }
+
+    a:hover {
+      color: #2980b9;
+    }
+
+    /* Navbar Styles */
+    header {
+      background-color: #2c3e50;
+      padding: 20px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center; /* Centers the logo */
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative; /* Allows positioning of the nav items */
+    }
+
+    nav .nav-links {
+      position: absolute;
+      right: 0; /* Aligns the nav links to the right */
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .logo img {
+      height: 100px; /* Adjusted logo size */
+      width: auto;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: url('hero-background.jpg') no-repeat center center/cover;
+      color: black;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    .cta-button {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+    }
+
+    .cta-button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Features Section */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      background-color: white;
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature {
+      text-align: center;
+      width: 30%;
+    }
+
+    .feature h2 {
+      color: #2c3e50;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      font-size: 1rem;
+      color: #7f8c8d;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      background-color: #ecf0f1;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .testimonials blockquote {
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #7f8c8d;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    /* Call-to-Action Section */
+    .cta-secondary {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .cta-secondary h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .cta-secondary p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #34495e;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    footer ul {
+      list-style-type: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 0;
+    }
+
+    footer ul li {
+      display: inline;
+    }
+
+    footer ul li a {
+      color: white;
+      font-size: 1rem;
+    }
+
+    footer p {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
 
@@ -16,12 +197,16 @@
       <%= link_to root_path, class: "logo" do %>
         <%= image_tag 'logo.jpg', alt: "Waste to Worth Farms Logo" %>
       <% end %>
-      <ul>
-        <li><%= link_to "Market Hub", products_path %></li>
-        <li><%= link_to "About Us", about_path %></li>
-        <li><%= link_to "Our Services", services_path %></li>
-        <li><%= link_to "Get Involved", contact_path %></li>
-      </ul>
+      
+      <!-- Wrapper for the navigation links -->
+      <div class="nav-links">
+        <ul>
+          <li><%= link_to "Market Hub", products_path %></li>
+          <li><%= link_to "About Us", about_path %></li>
+          <li><%= link_to "Our Services", services_path %></li>
+          <li><%= link_to "Get Involved", contact_path %></li>
+        </ul>
+      </div>
     </nav>
   </header>
 
@@ -78,5 +263,6 @@
       <li><%= link_to "Twitter", "https://twitter.com", target: "_blank" %></li>
     </ul>
   </footer>
+
 </body>
 </html>
