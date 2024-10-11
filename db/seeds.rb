@@ -41,5 +41,11 @@ Product.create!(
 
 User.create!(
   email: "user@email.com",
-  password: "password"
+  password: "password",
+  user_type: "Marketer",
+  full_name: "Bob Jones",
+  phone_number: "901-111-2222",
+  contact_preference: "Email",
+  location: "Memphis",
+  organization_type: "Grocery Store"
 )
