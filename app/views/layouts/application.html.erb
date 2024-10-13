@@ -25,6 +25,7 @@
       color: #3498db;
     }
 
+
     a:hover {
       color: #2980b9;
     }
@@ -42,6 +43,11 @@
       font-size: 1rem;
     }
 
+    .navbar .navbar-nav .nav-link.active {
+      color: white; 
+      font-weight: bold; 
+    }
+
     .navbar .navbar-nav .nav-link:hover {
       color: #3498db;
     }
@@ -55,6 +61,8 @@
     .navbar .navbar-brand:hover {
       color: #3498db;
     }
+
+
 
 
     .logo img {
@@ -230,20 +238,20 @@
 
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "Hi, #{current_user.email}", edit_user_registration_path, class: "nav-link #{active_class(edit_user_registration_path)} btn btn-link" %>
+              <%= link_to "Hi, #{current_user.email}", edit_user_registration_path, class: "nav-link #{active_class(edit_user_registration_path)}" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Profile", user_path(current_user), class: "nav-link btn btn-link" %>
+              <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'nav-link btn btn-link' %>
+              <%= button_to 'Sign Out', destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'nav-link' %>
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to 'Sign In', new_user_session_path, class: "nav-link btn btn-link" %>
+              <%= link_to 'Sign In', new_user_session_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link btn btn-link" %>
+              <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
             </li>
           <% end %>
         </ul>
