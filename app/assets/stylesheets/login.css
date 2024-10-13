@@ -1,0 +1,88 @@
+/* Login and Signup Page Styles */
+.login-container {
+    max-width: 400px; /* Default width for both login and signup */
+    margin: 0 auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.login-container .field {
+    margin-bottom: 20px;
+}
+
+/* Select, text input, etc. */
+.login-container select,
+.login-container input[type="email"],
+.login-container input[type="password"],
+.login-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Styling for checkboxes */
+.login-container .field input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.login-container .actions input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.login-container .actions input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Background Styling */
+body.login-page,
+body.signup-page {
+    background: url('/assets/loginbackground.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+}
+
+/* Apply flex layout only for signup page */
+body.signup-page .login-container {
+    max-width: 900px; /* Wider container only for signup */
+}
+
+body.signup-page .form-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+body.signup-page .login-container fieldset {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    flex: 1; /* Equal width for each section */
+}
+
+body.signup-page .login-container legend {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
