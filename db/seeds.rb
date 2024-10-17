@@ -45,7 +45,7 @@ User.create!(
   user_type: "Marketer",
   full_name: "Bob Jones",
   phone_number: "901-111-2222",
-  contact_preference: "Email",
+  contact_preference: "email",
   location: "Memphis",
-  organization_type: "Grocery Store"
+  organization_type: "Food retailer"
 )
