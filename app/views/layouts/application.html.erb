@@ -8,6 +8,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
 
+
   <!-- Conditionally load the login stylesheet -->
 <% if (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>
   <%= stylesheet_link_tag 'login', media: 'all' %>
@@ -62,7 +63,7 @@
               <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'nav-link' %>
+              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-link nav-link" %>
             </li>
           <% else %>
             <li class="nav-item">

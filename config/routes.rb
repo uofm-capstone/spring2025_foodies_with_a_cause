@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'users/registrations' }
+  resources :users, only: [:index, :show]
 
   
   # root 'home#home'
@@ -9,9 +10,6 @@ Rails.application.routes.draw do
   get 'services', to: 'pages#services'
   get 'contact', to: 'pages#contact'
   
-  get 'users', to: 'users#index', as: 'users'
-  get 'users/:id', to: 'users#show', as: 'user'
-
   get 'privacy', to: 'pages#privacy', as: 'privacy'
   get 'terms', to: 'pages#terms', as: 'terms'
   get 'products', to: 'products#index', as: 'products'
