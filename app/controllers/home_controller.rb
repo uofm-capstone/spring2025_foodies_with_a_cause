@@ -5,5 +5,5 @@ class HomeController < ApplicationController
     render :home
   end
 
-  
+
 end
