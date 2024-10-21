@@ -1,4 +1,6 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
+import Rails from "@rails/ujs"
+Rails.start(); // This is necessary to handle delete requests properly
+
 import "@hotwired/turbo-rails"
 import "controllers"
 
