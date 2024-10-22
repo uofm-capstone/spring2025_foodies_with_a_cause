@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get 'steps/how_it_works'
   get 'static_pages/about'
-  devise_for :users, :controllers => { registrations: 'users/registrations' }
-  resources :users, only: [:index, :show]
+  devise_for :users
+  
 
 
   # root 'home#home'
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get 'users', to: 'users#index', as: 'users'
   get 'users/:id', to: 'users#show', as: 'user'
-  
+
   get 'privacy', to: 'pages#privacy', as: 'privacy'
   get 'terms', to: 'pages#terms', as: 'terms'
   get 'products', to: 'products#index', as: 'products'
