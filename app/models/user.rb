@@ -40,6 +40,7 @@ ORGANIZATION_TYPES = [
 
 CONTACT_PREFERENCES = ['text', 'email']
 
-#validates :organization_type, inclusion: { in: ORGANIZATION_TYPES, message: "%{value} is not a valid organization type" }
-#validates :contact_preference, inclusion: { in: CONTACT_PREFERENCES, message: "%{value} is not a valid contact preference" }
+validates :organization_type, inclusion: { in: ORGANIZATION_TYPES, message: "%{value} is not a valid organization type" }, allow_blank: true
+validates :contact_preference, inclusion: { in: CONTACT_PREFERENCES, message: "%{value} is not a valid contact preference" }, allow_blank: true
+
 end
