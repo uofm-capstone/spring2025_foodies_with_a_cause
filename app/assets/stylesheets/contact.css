@@ -1,5 +1,4 @@
 /* Global Styles */
-/* Ensure body is flexible enough for centering */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -8,8 +7,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Full height view */
-    flex-direction: column; /* Stack elements (navbar, then form) */
+    min-height: 100vh; 
+    flex-direction: column; 
 }
 
 .container {
@@ -20,10 +19,9 @@ body {
     max-width: 500px;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 20px; /* Add some space below navbar */
+    margin-top: 20px; 
 }
 
-/* Ensure navbar stays at the top */
 nav.navbar {
     width: 100%;
     position: relative;
