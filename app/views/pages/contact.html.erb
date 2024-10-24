@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <%= stylesheet_link_tag 'contact', media: 'all', 'data-turbo-track': 'reload' %>
+</head>
+<body>
+    <div class="container">
+        <h2>Get Involved</h2>
+        <p>Please leave your contact information and your message.</p>
+        <form class="contact-form">
+            <div class="input-area">
+                <input type="text" placeholder="Your Name" required>
+            </div>
+            <div class="input-area">
+                <input type="email" placeholder="Email Address" required>
+            </div>
+            <div class="input-area">
+                <input type="text" placeholder="Subject" required>
+            </div>
+            <div class="input-area">
+                <textarea placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="sendbtn">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>
