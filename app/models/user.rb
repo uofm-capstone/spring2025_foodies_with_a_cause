@@ -25,7 +25,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, 
   :recoverable, :rememberable, :validatable
 has_many :products, dependent: :destroy
 ORGANIZATION_TYPES = [
@@ -40,6 +40,6 @@ ORGANIZATION_TYPES = [
 
 CONTACT_PREFERENCES = ['text', 'email']
 
-validates :organization_type, inclusion: { in: ORGANIZATION_TYPES, message: "%{value} is not a valid organization type" }
-validates :contact_preference, inclusion: { in: CONTACT_PREFERENCES, message: "%{value} is not a valid contact preference" }
+#validates :organization_type, inclusion: { in: ORGANIZATION_TYPES, message: "%{value} is not a valid organization type" }
+#validates :contact_preference, inclusion: { in: CONTACT_PREFERENCES, message: "%{value} is not a valid contact preference" }
 end
