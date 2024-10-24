@@ -1,5 +1,12 @@
 <h1><%= @user.full_name %>'s Profile</h1>
 
+
+<ul>
+  <% @user.products.each do |product| %>
+    <li><%= link_to product.name, product_path(product) %></li>
+  <% end %>
+</ul>
+
 <p>
     Email:
     <%= @user.email %>

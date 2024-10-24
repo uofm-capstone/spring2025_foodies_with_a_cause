@@ -10,18 +10,29 @@
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :bigint           not null
+#
+# Indexes
+#
+#  index_products_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
 #
 
 one:
-  name: MyString
   amount: MyString
-  marketer: MyString
-  expiration: 2024-10-01
+  expiration: 2024-10-18
   hold: MyString
+  marketer: MyString
+  name: MyString
+  user: one
 
 two:
-  name: MyString
   amount: MyString
-  marketer: MyString
-  expiration: 2024-10-01
+  expiration: 2024-10-18
   hold: MyString
+  marketer: MyString
+  name: MyString
+  user: two

@@ -93,7 +93,7 @@
             <% else %>
                 <% @products.each do |product| %>
                     <tr>
-                        <td><%= product.name %></td>
+                        <td><%= link_to product.name, product_path(product) %></td>
                         <td><%= product.amount %></td>
                         <td><%= product.marketer %></td>
                         <td><%= product.expiration %></td>
