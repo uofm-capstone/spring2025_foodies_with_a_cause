@@ -2,13 +2,176 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Waste to Worth Farms</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+  <style>
+    /* General Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9; /* Light gray background */
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    h1, h2 {
+      font-family: 'Helvetica', sans-serif;
+      color: #2c3e50; /* Dark gray */
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    /* Hero Section */
+  /* Hero Section */
+.hero {
+    background-color: #2c3e50;
+    color: #fff; /* This already sets the text color to white */
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: white; /* Ensures the h1 text is white */
+}
+
+.hero p {
+    font-size: 22px;
+    margin-bottom: 30px;
+    color: white; /* Ensures the paragraph text is white */
+}
 
 
+    .cta-button {
+      padding: 10px 25px;
+      background-color: #3CB371; /* Red */
+      color: white;
+      font-size: 18px;
+      border-radius: 25px;
+      transition: background-color 0.3s;
+    }
+
+    .cta-button:hover {
+      background-color: #ffffff; /* Darker red */
+    }
+
+    /* Features Section */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      padding: 50px 20px;
+      background-color: #ecf0f1; /* Light gray */
+    }
+
+    .feature {
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .feature h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .feature p {
+      font-size: 16px;
+      color: #333;
+    }
+
+    /* Join Us Section */
+    .join-us {
+      background-color: #ffffff; /* White background */
+      color: #27ae60; /* Text color to match the theme */
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .join-us h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .cta-text {
+      font-size: 22px;
+      margin: 20px 0;
+    }
+
+    .join-us p {
+      font-size: 18px;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      background-color: #ecf0f1; /* Light gray */
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .testimonials blockquote {
+      font-size: 20px;
+      font-style: italic;
+      margin: 20px auto;
+      max-width: 600px;
+      color: #2c3e50; /* Dark gray */
+    }
+
+    /* Call to Action Section */
+    .cta-secondary {
+      padding: 50px 20px;
+      background-color: #ffffff; /* White background */
+      text-align: center;
+      color: #f39c12; /* Text color to match the theme */
+    }
+
+    .cta-secondary h2 {
+      font-size: 32px;
+    }
+
+    .cta-secondary p {
+      font-size: 20px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2c3e50; /* Dark gray */
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    footer p, footer ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    footer ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    footer a {
+      color: #ecf0f1; /* Light gray for links */
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
@@ -33,6 +196,14 @@
       <h2>Natural Fertilizer</h2>
       <p>By recycling food waste, we produce eco-friendly fertilizers that help farmers grow healthier, more resilient crops.</p>
     </div>
+  </section>
+
+  <!-- Join Us Section -->
+  <section class="join-us">
+    <h2>Join Us in the Fight Against Food Waste</h2>
+    <p>ProduceBridge is more than just a platform; it’s a movement toward a more sustainable and equitable food system. By joining our community, you’re playing a vital role in the fight against food waste and food insecurity.</p>
+    <p class="cta-text">Get Started Today!</p>
+    <p>Ready to make a difference? Sign up for free today and help us bridge the gap between surplus and need. Together, we can create a world where everyone has access to nutritious food, and where waste is a thing of the past.</p>
   </section>
 
   <!-- Testimonials Section -->

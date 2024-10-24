@@ -49,3 +49,4 @@ User.create!(
   location: "Memphis",
   organization_type: "Food retailer"
 )
+

@@ -10,6 +10,11 @@
 </head>
 <body>
 
+<!-- Conditionally load the login stylesheet -->
+<% if (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>
+  <%= stylesheet_link_tag 'login', media: 'all' %>
+<% end %>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid justify-content-center">
@@ -37,28 +42,35 @@
         <li class="nav-item">
           <%= link_to "Our Services", services_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Get Involved", contact_path, class: "nav-link" %>
-        </li>
-        <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Hi, #{current_user.full_name}", edit_user_registration_path, class: "nav-link" %>
+            <%= link_to "Get Involved", contact_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
+            <%= link_to "How it Works", how_it_works_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-link nav-link" %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'Sign In', new_user_session_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+        </ul>
+  
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Hi, #{current_user.full_name}", edit_user_registration_path, class: "nav-link #{active_class(edit_user_registration_path)}" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-link nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Sign In', new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </nav>
 
