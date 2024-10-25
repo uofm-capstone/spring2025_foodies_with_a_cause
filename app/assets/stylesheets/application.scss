@@ -31,7 +31,7 @@ main {
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  padding-top: 140px;  /* Adjust based on navbar height */
   background-color: #f4f4f4;
   color: #333;
 }
@@ -42,74 +42,128 @@ a {
 }
 
 a:hover {
-  color: #2980b9;
+  color: #29b97f;
 }
 
 /* Navbar Styles */
-
-/* Navbar */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: #2c3e50;
-  padding: 20px;
-  position: relative; /* Ensure it stays in place */
+  background-color: rgb(255, 255, 255);
+  z-index: 1000;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Logo in the center */
+.logo img {
+  height: 80px;
+  width: auto;
+}
 
-.navbar .navbar-nav .nav-link {
-  color: white;
+/* Left and Right Navigation */
+.left-nav, .right-nav {
+  display: flex;
+  align-items: center;
+}
+
+.left-nav li, .right-nav li {
+  display: inline-flex; /* Keeping everything in the same line */
+  align-items: center;
+  margin: 0 15px;  /* Adjust spacing as needed */
+}
+
+/* Dot Separators */
+.left-nav li::after, .right-nav li::after {
+  content: '•';
+  margin-left: 10px;
+  color: #29b97f;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Remove the last dot */
+.left-nav li:last-child::after, .right-nav li:last-child::after {
+  content: '';  
+}
+
+/* Navbar Link Styles */
+.navbar .nav-link {
+  color: rgb(84, 73, 73);
   font-weight: bold;
   font-size: 1rem;
 }
 
-.navbar .navbar-nav .nav-link.active {
+.navbar .nav-link:hover {
+  color: #29b97f;
+}
+
+/* Active Nav Link */
+.navbar .nav-link.active {
+  color: #000;
+  font-weight: bold;
+}
+
+/* Center logo adjustment for responsive design */
+@media (max-width: 992px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .left-nav, .right-nav {
+    justify-content: center;
+  }
+
+  .logo {
+    margin: 20px 0;
+  }
+}
+
+/* Hero Section with Transparent Background Overlay */
+.hero {
+  position: relative;
+  background: url('farm-sunset.jpg') no-repeat center center/cover;
   color: white;
   font-weight: bold;
-}
-
-.navbar .navbar-nav .nav-link:hover {
-  color: #3498db;
-}
-
-.navbar .navbar-brand {
-  color: #3498db;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.navbar .navbar-brand:hover {
-  color: #3498db;
-}
-
-
-
-
-.logo img {
-  height: 100px;
-  /* Adjusted logo size */
-  width: auto;
-}
-
-/* Hero Section */
-.hero {
-  background: url('hero-background.jpg') no-repeat center center/cover;
-  color: black;
   text-align: center;
   padding: 100px 20px;
+  height: 400px;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark transparent overlay */
+  z-index: 1;
+}
+
+.hero h1, .hero p, .cta-button {
+  position: relative;  /* Ensure text stays on top of the overlay */
+  z-index: 2;
 }
 
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 20px;
+  color: white;  /* White text for contrast */
 }
 
 .hero p {
   font-size: 1.2rem;
   margin-bottom: 40px;
+  color: white;  /* White text for contrast */
 }
 
 .cta-button {
-  background-color: #3498db;
+  background-color: #6e9ab7;
   color: white;
   padding: 10px 20px;
   font-size: 1.1rem;
@@ -117,7 +171,7 @@ a:hover {
 }
 
 .cta-button:hover {
-  background-color: #2980b9;
+  background-color: #29b97f;
 }
 
 /* Features Section */
@@ -181,29 +235,5 @@ a:hover {
 
 /* Footer */
 footer {
-  background-color: #34495e;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-}
-
-footer ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 0;
-}
-
-footer ul li {
-  display: inline;
-}
-
-footer ul li a {
-  color: white;
-  font-size: 1rem;
-}
-
-footer p {
-  margin-top: 10px;
+  background-color: #8fa7c0;
 }
