@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   get 'steps/how_it_works'
   get 'static_pages/about'
   devise_for :users
+  # resources :user do
+  #   resources :messages, only: [:index, :create]
+  # end
   
 
 
