@@ -11,3 +11,10 @@
   <strong>Seller Name:</strong> <%= @product.user.full_name %><br>
   <strong>Seller Email:</strong> <%= @product.user.email %><br>
 </p>
+
+<p>
+  <%= link_to "Back", products_path, class: 'btn btn-primary' %>
+  <%= link_to "Message", user_messages_path(user_id: @product.user.id), class: "btn btn-primary" %>
+
+
+</p>
