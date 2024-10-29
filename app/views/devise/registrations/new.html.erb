@@ -64,8 +64,8 @@
 
         <div class="field">
           <%= f.label :contact_preference, "Preferred contact method" %><br />
-          <%= f.check_box :contact_preference, { multiple: true }, 'text', nil %> Text
-          <%= f.check_box :contact_preference, { multiple: true }, 'email', nil %> Email
+          <%= f.radio_button :contact_preference, "text" %> Text
+          <%= f.radio_button :contact_preference, "email" %> Email
         </div>
       </fieldset>
     </div>

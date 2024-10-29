@@ -7,48 +7,38 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+</head>
+<body>
 
-
-  <!-- Conditionally load the login stylesheet -->
+<!-- Conditionally load the login stylesheet -->
 <% if (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>
   <%= stylesheet_link_tag 'login', media: 'all' %>
 <% end %>
 
-
-</head>
-<body class="<%= 'login-page' if controller_name == 'sessions' && action_name == 'new' %>
-              <%= 'signup-page' if controller_name == 'registrations' && action_name == 'new' %>">
-
-  
-
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-navy">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-  
-      <%= link_to root_path, class: "logo" do %>
-        <%= image_tag 'logo.jpg', alt: "Waste to Worth Farms Logo" %>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid justify-content-center">
+      
+      <!-- Left-aligned Navigation Links -->
+      <ul class="navbar-nav me-auto left-nav">
+        <li class="nav-item">
+          <%= link_to 'Home', home_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Market Hub', products_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'About Us', about_path, class: "nav-link" %>
+        </li>
+      </ul>
+      
+      <!-- Centered Logo -->
+      <%= link_to root_path, class: "logo mx-auto" do %>
+        <%= image_tag 'logo.jpg', alt: "Waste to Worth Farms Logo", class: 'navbar-logo' %>
       <% end %>
-  
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-              aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-  
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <%= link_to 'Home', home_path, class: "nav-link #{active_class(home_path)}" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Market Hub', products_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'About Us', about_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Our Services", services_path, class: "nav-link" %>
-          </li>
+
+      <!-- Right-aligned Navigation Links -->
+      <ul class="navbar-nav ms-auto right-nav">
           <li class="nav-item">
             <%= link_to "Get Involved", contact_path, class: "nav-link" %>
           </li>
