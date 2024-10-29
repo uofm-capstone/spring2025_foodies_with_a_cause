@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'steps/how_it_works'
   get 'static_pages/about'
   devise_for :users
-  
+
 
 
   # root 'home#home'
@@ -16,6 +16,10 @@ Rails.application.routes.draw do
 
   get 'users', to: 'users#index', as: 'users'
   get 'users/:id', to: 'users#show', as: 'user'
+
+  get 'users/:user_id/messages', to: 'messages#index', as: 'user_messages'
+  post 'users/:user_id/messages', to: 'messages#create'
+  get 'chat', to: 'messages#index', as: 'chat'
 
   
 

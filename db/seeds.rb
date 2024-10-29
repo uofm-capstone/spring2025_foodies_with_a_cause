@@ -8,13 +8,23 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 bob = User.create!(
-  email: "user@email.com",
+  email: "bob@email.com",
   password: "password",
   user_type: "Marketer",
   full_name: "Bob Jones",
   phone_number: "901-111-2222",
   contact_preference: "email",
   location: "Memphis",
+  organization_type: "Food retailer"
+)
+michael = User.create!(
+  email: "michael@email.com",
+  password: "password",
+  user_type: "Marketer",
+  full_name: "Michael Jackson",
+  phone_number: "901-111-2222",
+  contact_preference: "email",
+  location: "Oakland",
   organization_type: "Food retailer"
 )
 
@@ -42,7 +52,7 @@ Product.create!(
   marketer: "Walmart",
   expiration: Date.new(2024, 11, 3),
   hold: "5 days",
-  user: bob
+  user: michael
 )
 
 Product.create!(
@@ -51,7 +61,7 @@ Product.create!(
   marketer: "Kroger Inc",
   expiration: Date.new(2024, 11, 7),
   hold: "7 days",
-  user: bob
+  user: michael
 )
 
 

@@ -1,0 +1,19 @@
+<h2>Chat with <%= @receiver.full_name %></h2>
+
+<div id="messages">
+  <% @messages.each do |message| %>
+    <p>
+      <strong><%= message.sender == current_user ? "You" : message.sender.full_name %>:</strong>
+      <%= message.content %>
+    </p>
+  <% end %>
+</div>
+
+<%= form_with model: [@receiver, Message.new], local: true do |form| %>
+  <div>
+    <%= form.text_area :content, placeholder: "Type a message..." %>
+  </div>
+  <div>
+    <%= form.submit "Send" %>
+  </div>
+<% end %>
