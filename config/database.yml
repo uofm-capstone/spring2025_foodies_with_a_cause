@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: rails_demos_n_deets_2023_apps_production
-  username: rails_demos_n_deets_2023_apps
-  password: <%= ENV["RAILS_DEMOS_N_DEETS_2023_APPS_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
