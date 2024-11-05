@@ -5,12 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Market Nearby</title>
     <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 100px;
+            background-image: url(<%= asset_path 'loginbackground.jpg' %>);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; /* Keeps the background fixed when scrolling */
+        }
+
         /* Market Nearby Section */
         .market-nearby {
             max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9); /* Adds a slight transparency to container */
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
