@@ -1,1 +1,3 @@
-filler
+One button was unable to function properly
+Everything else looked nice and had a very good css design and that was the only notable issue
+-Nathan
