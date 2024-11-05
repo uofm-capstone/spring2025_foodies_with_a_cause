@@ -84,20 +84,27 @@
       color: #b3b3b3; /* Placeholder color */
     }
 
+    /* Message Form */
     form input[type="submit"] {
-      background-color: #3498db; /* Background color for submit button */
-      color: white; /* Text color for submit button */
-      padding: 10px 20px; /* Padding for submit button */
-      font-size: 1.1rem; /* Font size for submit button */
-      border-radius: 5px; /* Rounded corners for submit button */
-      cursor: pointer; /* Pointer cursor on hover */
-      transition: background-color 0.3s ease; /* Transition for hover effect */
-      border: none; /* No border */
-      margin-left: auto; /* Push button to the right */
+      background-color: #29b97f; /* Green background for submit button */
+      color: white;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+      margin-left: auto;
     }
 
     form input[type="submit"]:hover {
-      background-color: #2980b9; /* Darker color on hover */
+      background-color: #24a571; /* Slightly darker green on hover */
+    }
+
+    /* Lighter green for sender's message background */
+    #messages p.sender {
+      background-color: #b2e8d4; /* Light green background for sender's messages */
+      align-self: flex-end;
     }
   </style>
 </head>
