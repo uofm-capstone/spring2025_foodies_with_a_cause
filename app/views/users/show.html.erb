@@ -1,17 +1,113 @@
-<h1><%= @user.full_name %>'s Profile</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 500px; /* Remove body margin */
+            padding: 20px; /* Uniform padding */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align items in the flex container */
+        }
 
+        /* Centered container for content */
+        .container {
+            max-width: 1200px; /* Set a maximum width */
+            margin: 0 auto; /* Center the container */
+            padding: 20px; /* Uniform padding */
+        }
 
-<ul>
-  <% @user.products.each do |product| %>
-    <li><%= link_to product.name, product_path(product) %></li>
-  <% end %>
-</ul>
+        /* Header styling */
+        h1 {
+            font-size: 3.5em;
+            color: #333;
+            margin-bottom: 500px;
+            text-align: center; /* Center the header text */
+        }
 
-<p>
-    Email:
-    <%= @user.email %>
-</p>
-<p>
-    Phone Number:
-    <%= @user.phone_number %>
-</p>
+        /* Masonry-style grid layout for products */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px; /* Uniform gap between grid items */
+            width: 100%; /* Use full width */
+            justify-items: center; /* Center items in each grid cell */
+        }
+
+        /* Individual product item styling */
+        .product-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align content inside product item */
+            text-align: center; /* Center text in product item */
+            transition: transform 0.2s ease;
+            width: 100%; /* Ensure product item takes full width */
+            max-width: 200px; /* Limit maximum width for product item */
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+        }
+
+        .product-item a {
+            text-decoration: none;
+            color: #1877f2;
+            font-weight: 500;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* Contact information styling */
+        .contact-info {
+            margin-top: 30px;
+            font-size: 2.0em;
+            color: #606770;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .contact-info span {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container"> <!-- Added container div -->
+
+        <h1><%= @user.full_name %>'s Profile</h1>
+
+        <!-- Masonry grid for products -->
+        <div class="product-grid">
+            <% @user.products.each do |product| %>
+                <div class="product-item">
+                    <%= link_to product.name, product_path(product) %>
+                </div>
+            <% end %>
+        </div>
+
+        <!-- Contact information -->
+        <div class="contact-info">
+            <p><span>Email:</span> <%= @user.email %></p>
+            <p><span>Phone Number:</span> <%= @user.phone_number %></p>
+        </div>
+
+    </div> <!-- End of container div -->
+
+</body>
+</html>
