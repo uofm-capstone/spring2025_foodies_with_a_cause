@@ -1,73 +1,197 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 140px;
+        }
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+        .form-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1c1e21;
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        .edit-form {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+        .field {
+            margin-bottom: 20px;
+        }
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: #1877f2;
+            outline: none;
+        }
+
+        .actions {
+            text-align: center;
+        }
+
+        .btn-submit {
+            background-color: #28a745; /* Green color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+        .cancel-account-title {
+            margin-top: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .cancel-account-message {
+            text-align: center;
+        }
+
+        .btn-cancel {
+            background-color: #ff3b30;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-cancel:hover {
+            background-color: #e63946;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            color: #28a745; /* Green text color */
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px; /* Add padding for better appearance */
+            border: 2px solid #28a745; /* Green border */
+            border-radius: 5px; /* Rounded corners */
+            background-color: transparent; /* No background color */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #28a745; /* Green background on hover */
+            color: white; /* White text on hover */
+        }
+    </style>
+</head>
+<body>
+
+<h2 class="form-title">Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "edit-form" }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
-    <%= f.label :user_type %><br />
-    <%= f.text_field :user_type %>
-  </div>
+        <%= f.label :email, class: "form-label" %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-input" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :full_name %><br />
-    <%= f.text_field :full_name %>
-  </div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div class="confirmation-message">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number %>
-  </div>
+    <div class="field">
+        <%= f.label :password, class: "form-label" %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-input" %>
+        <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+    </div>
 
-  <div class="field">
-    <%= f.label :contact_preference %><br />
-    <%= f.text_field :contact_preference %>
-  </div>
+    <div class="field">
+        <%= f.label :password_confirmation, class: "form-label" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-input" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
+    <div class="field">
+        <%= f.label :user_type, class: "form-label" %><br />
+        <%= f.text_field :user_type, class: "form-input" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :organization_type %><br />
-    <%= f.text_field :organization_type %>
-  </div>
+    <div class="field">
+        <%= f.label :full_name, class: "form-label" %><br />
+        <%= f.text_field :full_name, class: "form-input" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+    <div class="field">
+        <%= f.label :phone_number, class: "form-label" %><br />
+        <%= f.text_field :phone_number, class: "form-input" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
+    <div class="field">
+        <%= f.label :contact_preference, class: "form-label" %><br />
+        <%= f.text_field :contact_preference, class: "form-input" %>
+    </div>
+
+    <div class="field">
+        <%= f.label :location, class: "form-label" %><br />
+        <%= f.text_field :location, class: "form-input" %>
+    </div>
+
+    <div class="field">
+        <%= f.label :organization_type, class: "form-label" %><br />
+        <%= f.text_field :organization_type, class: "form-input" %>
+    </div>
+
+    <div class="field">
+        <%= f.label :current_password, class: "form-label" %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-input" %>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Update", class: "btn-submit" %>
+    </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3 class="cancel-account-title">Cancel my account</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div class="cancel-account-message">Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "btn-cancel" %></div>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, class: "btn-back" %>
+
+</body>
+</html>
