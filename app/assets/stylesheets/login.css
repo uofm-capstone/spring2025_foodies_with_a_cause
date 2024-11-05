@@ -1,12 +1,13 @@
 /* Login and Signup Page Styles */
 .login-container {
-    max-width: 400px; /* Default width for both login and signup */
-    margin: 0 auto;
-    background-color: white;
+    max-width: 400px;
+    margin: 40px auto; /* Add vertical margin */
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .login-container h2 {
     text-align: center;
@@ -55,10 +56,13 @@
 /* Background Styling */
 body.login-page,
 body.signup-page {
+    padding-top: 100px; /* Reset padding-top */
     background: url('/assets/loginbackground.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
 }
+
+
 
 /* Apply flex layout only for signup page */
 body.signup-page .login-container {

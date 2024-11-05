@@ -6,15 +6,17 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+
+  <!-- Conditionally load the login stylesheet for login/signup pages -->
+  <% if (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>
+    <%= stylesheet_link_tag 'login', media: 'all' %>
+  <% end %>
+
   <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
 </head>
-<body>
 
-<!-- Conditionally load the login stylesheet -->
-<% if (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>
-  <%= stylesheet_link_tag 'login', media: 'all' %>
-<% end %>
-
+<body class="<%= 'login-page' if controller_name == 'sessions' && action_name == 'new' %>
+             <%= 'signup-page' if controller_name == 'registrations' && action_name == 'new' %>">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid justify-content-center">
