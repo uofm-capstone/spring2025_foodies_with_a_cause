@@ -71,12 +71,16 @@
   </nav>
 
   <!-- Flash messages -->
-  <% flash.each do |key, message| %>
-    <div class="alert <%= flash_class(key) %> alert-dismissible fade show text-center" role="alert">
-      <%= message %>
-      <button type="button" class="btn btn-close" data-bs-dismiss="alert"></button>
-    </div>
-  <% end %>
+<!-- Flash messages -->
+  <div class="flash-container text-center">
+    <% flash.each do |key, message| %>
+      <div class="alert <%= flash_class(key) %> alert-dismissible fade show mx-auto" role="alert" style="max-width: 400px;">
+        <%= message %>
+        <button type="button" class="btn btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    <% end %>
+  </div>
+
 
   <!-- Main content -->
   <main role="main" class="container">

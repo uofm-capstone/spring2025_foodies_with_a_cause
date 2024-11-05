@@ -237,3 +237,14 @@ a:hover {
 footer {
   background-color: #8fa7c0;
 }
+
+.flash-container {
+  position: fixed;
+  top: 80px; /* Adjust based on the navbar height */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050; /* Ensure it appears above other content */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
