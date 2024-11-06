@@ -6,7 +6,7 @@
     <style>
       /* Main Container Styling */
       .login-container {
-          max-width: 400px;
+          max-width: 750px;
           margin: 40px auto;
           background-color: rgba(255, 255, 255, 0.8);
           padding: 40px;
@@ -38,11 +38,6 @@
           margin-top: 5px;
       }
 
-      /* Checkbox Styling */
-      .login-container .field input[type="checkbox"] {
-          margin-right: 10px;
-      }
-
       /* Submit Button Styling */
       .login-container .actions input[type="submit"] {
           background-color: #3498db;
@@ -60,7 +55,6 @@
       }
 
       /* Background and Layout Adjustments */
-      body.login-page,
       body.signup-page {
           display: flex;
           align-items: center;
@@ -72,23 +66,11 @@
       }
 
       /* Signup Page Specific Layout */
-      body.signup-page .login-container {
-          max-width: 750px;
-      }
-
-      body.signup-page .form-sections {
-          display: flex;
-          justify-content: space-between;
-          gap: 20px;
-      }
-
-      /* Fieldset Styling */
       body.signup-page .login-container fieldset {
           border: 1px solid #ccc;
           padding: 20px;
           margin-bottom: 20px;
           border-radius: 5px;
-          flex: 1;
       }
 
       body.signup-page .login-container legend {
@@ -97,7 +79,24 @@
           color: #2c3e50;
           margin-bottom: 10px;
       }
+
+      /* Google Maps Styling */
+      #map {
+          height: 300px;
+          width: 100%;
+          border-radius: 5px;
+          margin-top: 20px;
+      }
+      .location-input {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-top: 10px;
+      }
     </style>
+
+    <!-- Google Maps JavaScript API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dTtwwEAGoN92cz3JOxv63Zn1ef1Mwdw" async defer></script>
 </head>
 <body class="signup-page">
 
@@ -169,6 +168,17 @@
             <%= f.radio_button :contact_preference, "email" %> Email
           </div>
         </fieldset>
+
+        <!-- Google Maps Section -->
+        <fieldset>
+          <legend>Location on Map</legend>
+          <div class="location-input">
+            <label for="address">Enter Your Address:</label>
+            <input type="text" id="address" placeholder="123 Main St, City, Country" />
+            <button type="button" onclick="geocodeAddress()">Show Location on Map</button>
+          </div>
+          <div id="map"></div>
+        </fieldset>
       </div>
 
       <div class="actions">
@@ -178,5 +188,41 @@
 
     <%= render "devise/shared/links" %>
   </div>
+
+  <script>
+    let map, geocoder;
+
+    // Initialize the map and Geocoder
+    function initMap() {
+      geocoder = new google.maps.Geocoder();
+      const defaultLocation = { lat: 40.73061, lng: -73.935242 };
+
+      map = new google.maps.Map(document.getElementById("map"), {
+        center: defaultLocation,
+        zoom: 12,
+      });
+    }
+
+    // Function to geocode address and display it on the map
+    function geocodeAddress() {
+      const address = document.getElementById("address").value;
+      geocoder.geocode({ address: address }, (results, status) => {
+        if (status === "OK") {
+          const location = results[0].geometry.location;
+          map.setCenter(location);
+          new google.maps.Marker({
+            map: map,
+            position: location,
+            title: "User's Location",
+          });
+        } else {
+          alert("Geocode was not successful: " + status);
+        }
+      });
+    }
+
+    // Load map when the window loads
+    window.onload = initMap;
+  </script>
 </body>
 </html>
