@@ -91,3 +91,5 @@ gem 'bootstrap_form', '~> 5.2.3'
 
 gem 'devise'
 
+gem 'kaminari'
+

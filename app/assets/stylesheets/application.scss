@@ -248,3 +248,42 @@ footer {
   display: flex;
   justify-content: center;
 }
+
+/* Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a,
+.pagination span {
+  margin: 0 5px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #29b97f; /* Green text */
+  background-color: white; /* White background */
+  border: 1px solid #29b97f; /* Single green border */
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  /* Reset any additional shadows or styles */
+  box-shadow: none; 
+  outline: none;
+}
+
+/* Hover and Active States */
+.pagination a:hover,
+.pagination span:hover,
+.pagination .active span {
+  background-color: #29b97f; /* Green background on hover */
+  color: white; /* White text on hover */
+  border: 1px solid #29b97f;
+}
+
+/* Remove any inner padding/margins specific to the active state */
+.pagination .active span {
+  padding: 8px 12px;
+  box-shadow: none;
+  outline: none;
+}

@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    # Permit additional sign up parameters
+    # Permit additional sign-up parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [
-      :full_name, :phone_number, :organization_type, :location, :contact_preference
+      :full_name, :phone_number, :organization_type, :location, :latitude, :longitude, :contact_preference
     ])
   end
 end

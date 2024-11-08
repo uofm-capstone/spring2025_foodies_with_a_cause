@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Your Profile</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header styling */
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Field labels */
+        .field {
+            margin-bottom: 15px;
+        }
+
+        .field label {
+            font-weight: bold;
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Input, select, and textarea styling */
+        .field input[type="text"],
+        .field input[type="tel"],
+        .field select,
+        .field textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Unified button style for profile actions */
+        .profile-btn {
+            background-color: #1a6434; /* Darker green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .profile-btn:hover {
+            background-color: #14502b; /* Darker shade on hover */
+        }
+
+        /* Form section styling */
+        .form-section {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* Profile message textarea */
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+
+        /* Actions section */
+        .actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Edit Your Profile</h1>
+
+        <%= form_with model: @user, local: true do |f| %>
+            <div class="form-section">
+                <div class="field">
+                    <%= f.label :full_name, "Full Name" %>
+                    <%= f.text_field :full_name %>
+                </div>
+
+                <div class="field">
+                    <%= f.label :phone_number, "Phone Number" %>
+                    <%= f.text_field :phone_number, type: "tel" %>
+                </div>
+
+                <div class="field">
+                    <%= f.label :location, "Location" %>
+                    <%= f.text_field :location %>
+                </div>
+
+                <div class="field">
+                    <%= f.label :organization_type, "Organization Type" %>
+                    <%= f.select :organization_type, User::ORGANIZATION_TYPES, prompt: "Select your organization type" %>
+                </div>
+
+                <div class="field">
+                    <%= f.label :contact_preference, "Preferred Contact Method" %>
+                    <%= f.radio_button :contact_preference, "text" %> Text
+                    <%= f.radio_button :contact_preference, "email" %> Email
+                </div>
+
+                <div class="field">
+                    <%= f.label :profile_message, "Profile Message" %>
+                    <%= f.text_area :profile_message, rows: 3, placeholder: "Write a message for your profile page" %>
+                </div>
+            </div>
+
+            <div class="actions">
+                <%= f.submit "Update Profile", class: "profile-btn" %>
+                <%= link_to 'Back to Profile', user_path(@user), class: 'profile-btn' %>
+            </div>
+        <% end %>
+    </div>
+
+</body>
+</html>
