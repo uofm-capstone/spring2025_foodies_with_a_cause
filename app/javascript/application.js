@@ -1,12 +1,12 @@
-import Rails from "@rails/ujs"
+import Rails from "@rails/ujs";
 Rails.start(); // Ensures delete requests work with data-method attributes
 
-import "@hotwired/turbo-rails" 
-import "controllers"
+import "@hotwired/turbo-rails"; 
+import "controllers";
 
-import "popper"
-import "bootstrap"
-import * as autosize from "autosize"
+import "popper";
+import "bootstrap";
+import * as autosize from "autosize";
 
 // Initialize Bootstrap popovers and tooltips on each Turbo load
 document.addEventListener("turbo:load", () => {

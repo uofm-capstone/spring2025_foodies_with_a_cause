@@ -41,7 +41,7 @@
             color: #2c3e50;
             margin-top: 20px;
             text-align: left;
-            border-bottom: 2px solid #1a6434; /* Darker green border */
+            border-bottom: 2px solid #1a6434;
             padding-bottom: 5px;
         }
 
@@ -65,11 +65,11 @@
         th, td {
             padding: 12px;
             text-align: center;
-            border: 1px solid black; /* Black border */
+            border: 1px solid black;
         }
 
         th {
-            background-color: #1a6434; /* Darker green header */
+            background-color: #1a6434;
             color: white;
             font-weight: bold;
         }
@@ -79,9 +79,9 @@
             color: #333;
         }
 
-        /* Alternate row coloring for readability */
+        /* Alternate row coloring */
         tbody tr:nth-child(even) td {
-            background-color: #d3e4d7; /* Light green tint */
+            background-color: #d3e4d7;
         }
 
         /* Map styling */
@@ -90,15 +90,6 @@
             width: 100%;
             border-radius: 8px;
             margin-top: 20px;
-        }
-
-        /* Location header styling */
-        .location-header {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-top: 30px;
-            text-align: center;
-            color: #2c3e50;
         }
 
         /* Button styling */
@@ -122,7 +113,7 @@
 
         /* Delete link styling */
         .delete-link {
-            color: #e74c3c; /* Red color for delete */
+            color: #e74c3c;
             font-weight: bold;
             text-decoration: none;
         }
@@ -179,7 +170,9 @@
                             <td><%= product.expiration %></td>
                             <td><%= product.hold %></td>
                             <% if current_user == @user %>
-                                <td><%= link_to "Delete", user_path(@user), method: :delete, data: { confirm: "Are you sure you want to delete this product?" }, class: "delete-link" %></td>
+                                <td>
+                                    <%= link_to "Delete", product_path(product), method: :delete, data: { confirm: "Are you sure you want to delete this product?", turbo: false }, class: "delete-link" %>
+                                </td>
                             <% end %>
                         </tr>
                     <% end %>
