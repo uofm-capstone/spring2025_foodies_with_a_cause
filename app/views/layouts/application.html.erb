@@ -9,7 +9,6 @@
 
   <!-- Conditionally load the login stylesheet for login/signup pages -->
   <% if (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>
-    <%= stylesheet_link_tag 'login', media: 'all' %>
   <% end %>
 
 

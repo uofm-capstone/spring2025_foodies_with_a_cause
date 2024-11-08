@@ -7,9 +7,12 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  full_name              :string           default(""), not null
+#  latitude               :float
 #  location               :string           default(""), not null
+#  longitude              :float
 #  organization_type      :string           default(""), not null
 #  phone_number           :string           default(""), not null
+#  profile_message        :text
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string

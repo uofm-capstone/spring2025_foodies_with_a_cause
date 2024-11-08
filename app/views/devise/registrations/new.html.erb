@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      /* Main Container Styling */
+      /* Container Styling */
       .login-container {
           max-width: 750px;
           margin: 40px auto;
@@ -21,15 +21,15 @@
           color: #2c3e50;
       }
 
-      .login-container .field {
+      .field {
           margin-bottom: 20px;
       }
 
       /* Input and Select Styling */
-      .login-container select,
+      .login-container input[type="text"],
       .login-container input[type="email"],
       .login-container input[type="password"],
-      .login-container input[type="text"] {
+      .login-container select {
           width: 100%;
           padding: 10px;
           font-size: 1rem;
@@ -54,7 +54,7 @@
           background-color: #2980b9;
       }
 
-      /* Background and Layout Adjustments */
+      /* Background Styling */
       body.signup-page {
           display: flex;
           align-items: center;
@@ -63,21 +63,6 @@
           background-size: cover;
           min-height: 100vh;
           margin: 0;
-      }
-
-      /* Signup Page Specific Layout */
-      body.signup-page .login-container fieldset {
-          border: 1px solid #ccc;
-          padding: 20px;
-          margin-bottom: 20px;
-          border-radius: 5px;
-      }
-
-      body.signup-page .login-container legend {
-          font-size: 1.2rem;
-          font-weight: bold;
-          color: #2c3e50;
-          margin-bottom: 10px;
       }
 
       /* Google Maps Styling */
@@ -177,7 +162,13 @@
             <input type="text" id="address" placeholder="123 Main St, City, Country" />
             <button type="button" onclick="geocodeAddress()">Show Location on Map</button>
           </div>
+
           <div id="map"></div>
+
+          <!-- Hidden fields for latitude and longitude -->
+          <%= f.hidden_field :latitude, id: "latitude" %>
+          <%= f.hidden_field :longitude, id: "longitude" %>
+          <%= f.hidden_field :location, id: "location" %>
         </fieldset>
       </div>
 
@@ -215,6 +206,10 @@
             position: location,
             title: "User's Location",
           });
+          // Store the address and coordinates in hidden fields
+          document.getElementById("location").value = address;
+          document.getElementById("latitude").value = location.lat();
+          document.getElementById("longitude").value = location.lng();
         } else {
           alert("Geocode was not successful: " + status);
         }
