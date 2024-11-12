@@ -1,0 +1,32 @@
+/* Container for Privacy Policy */
+.privacy-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  /* Main Heading */
+  .privacy-container h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  /* Section Headings */
+  .privacy-container h2 {
+    font-size: 1.8em;
+    margin-top: 20px;
+    border-bottom: 2px solid #1a6434;
+    padding-bottom: 5px;
+    color: #2c3e50;
+  }
+  
+  /* Paragraph styling */
+  .privacy-container p {
+    margin-bottom: 15px;
+  }
+  

@@ -93,3 +93,5 @@ gem 'devise'
 
 gem 'kaminari'
 
+
+gem "webpacker", "~> 5.4"

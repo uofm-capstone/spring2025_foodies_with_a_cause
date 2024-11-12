@@ -1,0 +1,103 @@
+/* General Styling for Services Page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 50px;
+}
+
+.services-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #2c3e50;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 20px;
+    border-bottom: 2px solid #1a6434;
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin-top: 15px;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #7f8c8d;
+    margin: 10px 0;
+}
+
+/* Features Section */
+.feature-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.feature-item {
+    width: 30%;
+    text-align: center;
+}
+
+.feature-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+}
+
+/* Call-to-Action Styling */
+.cta-section {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #3CB371;
+    color: white;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feature-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .feature-item {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
