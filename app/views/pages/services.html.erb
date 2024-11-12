@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Services | ProduceBridge</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'services', media: 'all' %> 
+</head>
+<body>
+    <div class="services-container">
+        <!-- Page Title -->
+        <h1>Our Services</h1>
+
+        <!-- Introduction -->
+        <p>At <strong>ProduceBridge</strong>, we offer services aimed at reducing food waste and supporting sustainable agriculture. Our goal is to connect organizations with surplus food to those who can use it effectively, creating a positive impact on both the environment and the community.</p>
+
+        <!-- Features Section -->
+        <div class="feature-section">
+            <div class="feature-item">
+                <h3>Biowaste to Feed</h3>
+                <p>We collect surplus food and process it into nutritious animal feed, reducing waste and supporting local farms.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Compost Creation</h3>
+                <p>Our program transforms organic waste into rich compost that nourishes the soil and promotes sustainable agriculture.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Natural Fertilizer</h3>
+                <p>By recycling food waste, we produce eco-friendly fertilizers that help farmers grow healthier, more resilient crops.</p>
+            </div>
+        </div>
+
+        <!-- Detailed Service Descriptions -->
+        <h2>Who We Serve</h2>
+
+        <h3>Grocery Stores</h3>
+        <p><strong>Reduce Waste:</strong> Effectively manage excess inventory.</p>
+        <p><strong>Community Impact:</strong> Support local food pantries and reduce food insecurity.</p>
+
+        <h3>Farms</h3>
+        <p><strong>Utilize Surplus:</strong> Connect with organizations that can use unsold produce.</p>
+        <p><strong>Increase Revenue:</strong> Offset losses by finding new channels for surplus goods.</p>
+        <p><strong>Offset Feed Costs:</strong> Use unsaleable or expired produce to reduce livestock feed costs.</p>
+
+        <h3>Truck Drivers</h3>
+        <p><strong>Avoid Losses:</strong> Find organizations that can take rejected loads and reduce wasted miles.</p>
+        <p><strong>Support Local:</strong> Help feed communities while maximizing your delivery routes.</p>
+
+        <h3>Food Pantries and Nonprofits</h3>
+        <p><strong>Access Quality Food:</strong> Get fresh, surplus food to distribute to those in need.</p>
+        <p><strong>Strengthen Community Ties:</strong> Build relationships with local businesses and farms.</p>
+
+        <!-- Call-to-Action Section -->
+        <div class="cta-section">
+            <h2>Ready to Join Us?</h2>
+            <p>ProduceBridge is more than a service; it’s a movement toward a sustainable and equitable food system. Together, we can reduce waste and make a difference.</p>
+            <%= link_to "Get Involved", contact_path, class: "cta-button" %>
+        </div>
+    </div>
+</body>
+</html>

@@ -6,13 +6,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
-
-  <!-- Conditionally load the login stylesheet for login/signup pages -->
-  <% if (controller_name == 'sessions' && action_name == 'new') || (controller_name == 'registrations' && action_name == 'new') %>
-  <% end %>
-
-
-  <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
 </head>
 
 <body class="<%= 'login-page' if controller_name == 'sessions' && action_name == 'new' %>
@@ -20,7 +14,6 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid justify-content-center">
-      
       <!-- Left-aligned Navigation Links -->
       <ul class="navbar-nav me-auto left-nav">
         <li class="nav-item">
@@ -71,21 +64,19 @@
   </nav>
 
   <!-- Flash messages -->
-<!-- Flash messages -->
-  <div class="flash-container text-center">
-    <% flash.each do |key, message| %>
-      <div class="alert <%= flash_class(key) %> alert-dismissible fade show mx-auto" role="alert" style="max-width: 400px;">
-        <%= message %>
-        <button type="button" class="btn btn-close" data-bs-dismiss="alert"></button>
-      </div>
-    <% end %>
-  </div>
+  <div class="flash-container text-center" data-turbo="false">
+  <% flash.each do |key, message| %>
+    <div class="alert <%= flash_class(key) %> alert-dismissible fade show mx-auto" role="alert" style="max-width: 400px;">
+      <%= message %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+</div>
 
 
   <!-- Main content -->
   <main role="main" class="container">
     <%= yield %> 
   </main>
-
 </body>
 </html>
