@@ -4,8 +4,19 @@ class ProductsController < ApplicationController
   before_action :authorize_user!, only: [:destroy]
 
   def index
-    # Paginate @products, displaying 5 products per page
-    @products = Product.order(:expiration).page(params[:page]).per(5)
+    if params[:query].present?
+      # Filter products by search query
+      @products = Product.where("name ILIKE ?", "%#{params[:query]}%")
+                         .order(:expiration)
+                         .page(params[:page])
+                         .per(5)
+    else
+      # Show all products with pagination if no search query
+      @products = Product.order(:expiration)
+                         .page(params[:page])
+                         .per(5)
+    end
+
     render :index
   end
 
@@ -34,7 +45,7 @@ class ProductsController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash[:error] = "Failed to delete the product."
-      redirect_to user_path(current_user) 
+      redirect_to user_path(current_user)
     end
   end
 

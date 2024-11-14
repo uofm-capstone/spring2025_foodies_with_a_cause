@@ -127,6 +127,14 @@
 <section class="market-nearby">
     <h1>On the Market Nearby</h1>
 
+    <!-- Search Form -->
+  <%= form_with url: products_path, method: :get, local: true, class: "search-form" do |form| %>
+    <div class="input-group mb-3">
+      <%= form.text_field :query, placeholder: "Search products by name...", class: "form-control" %>
+      <%= form.submit "Search", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
     <!-- New Product Button -->
     <p>
         <%= link_to "Submit New Product", new_product_path, class: 'new-btn' %>
@@ -168,40 +176,39 @@
         <%= paginate @products %>
     </div>
 
-    <!-- Google Map -->
-    <div id="map"></div>
-</section>
+   <!-- Google Map -->
+<div id="map"></div>
 
 <script>
-    function initMap() {
-        const memphis = { lat: 35.1495, lng: -90.0490 };
+  function initMap() {
+    const memphis = { lat: 35.1495, lng: -90.0490 };
 
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 11,
-            center: memphis
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 11,
+      center: memphis
+    });
+
+    const products = <%= raw @products.to_json(only: [:id, :marketer], include: { user: { only: [:latitude, :longitude, :location] } }) %>;
+
+    products.forEach(product => {
+      if (product.user.latitude && product.user.longitude) {
+        const position = {
+          lat: product.user.latitude,
+          lng: product.user.longitude
+        };
+
+        const marker = new google.maps.Marker({
+          position: position,
+          map: map,
+          title: product.marketer
         });
 
-        const products = <%= raw @products.to_json(only: [:id, :marketer], include: { user: { only: [:latitude, :longitude, :location] } }) %>;
-
-        products.forEach(product => {
-            if (product.user.latitude && product.user.longitude) {
-                const position = {
-                    lat: product.user.latitude,
-                    lng: product.user.longitude
-                };
-
-                const marker = new google.maps.Marker({
-                    position: position,
-                    map: map,
-                    title: product.marketer
-                });
-
-                marker.addListener("click", () => {
-                    window.location.href = "/products/" + product.id;
-                });
-            }
+        marker.addListener("click", () => {
+          window.location.href = "/products/" + product.id;
         });
-    }
+      }
+    });
+  }
 
     window.onload = initMap;
 </script>
