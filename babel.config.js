@@ -30,7 +30,7 @@ module.exports = function(api) {
         {
           forceAllTransforms: true,
           useBuiltIns: 'entry',
-          corejs: 3,           // Ensure core-js 3 for polyfill handling
+          corejs: 3,
           modules: false,
           exclude: ['transform-typeof-symbol']
         }
@@ -43,31 +43,39 @@ module.exports = function(api) {
       '@babel/plugin-transform-destructuring',
       [
         '@babel/plugin-proposal-class-properties',
-        { loose: true }
+        {
+          loose: true
+        }
       ],
       [
         '@babel/plugin-proposal-object-rest-spread',
-        { useBuiltIns: true }
+        {
+          useBuiltIns: true
+        }
       ],
       [
         '@babel/plugin-proposal-private-methods',
-        { loose: true }
+        {
+          loose: true
+        }
       ],
       [
         '@babel/plugin-proposal-private-property-in-object',
-        { loose: true }
+        {
+          loose: true
+        }
       ],
       [
         '@babel/plugin-transform-runtime',
         {
-          helpers: false,
-          regenerator: true, // Ensure async/await support
-          corejs: 3         // Matches core-js version for consistency
+          helpers: false
         }
       ],
       [
         '@babel/plugin-transform-regenerator',
-        { async: false }
+        {
+          async: false
+        }
       ]
     ].filter(Boolean)
   }
