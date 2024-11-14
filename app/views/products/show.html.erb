@@ -1,20 +1,80 @@
-<h1>Product Details</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+</head>
+<body>
+  <h1>Product Details</h1>
 
-<p>
-  <strong>Name:</strong> <%= @product.name %><br>
-  <strong>Description:</strong> <%= @product.amount %><br>
-  <strong>Price:</strong> <%= @product.hold %><br>
-</p>
+  <p>
+    <strong>Name:</strong> <%= @product.name %><br>
+    <strong>Description:</strong> <%= @product.amount %><br>
+    <strong>Price:</strong> <%= @product.hold %><br>
+  </p>
 
-<h2>Seller Information</h2>
-<p>
-  <strong>Seller Name:</strong> <%= @product.user.full_name %><br>
-  <strong>Seller Email:</strong> <%= @product.user.email %><br>
-</p>
+  <h2>Seller Information</h2>
+  <p>
+    <strong>Seller Name:</strong> <%= @product.user.full_name %><br>
+    <strong>Seller Email:</strong> <%= @product.user.email %><br>
+  </p>
 
-<p>
-  <%= link_to "Back", products_path, class: 'btn btn-primary' %>
-  <%= link_to "Message", user_messages_path(user_id: @product.user.id), class: "btn btn-primary" %>
+  <p>
+    <%= link_to "Back", products_path, class: 'btn btn-primary' %>
+    <%= link_to "Message", user_messages_path(user_id: @product.user.id), class: "btn btn-primary" %>
+    <button id="get-directions-btn" class="btn btn-primary">Get Directions</button>
+    <a id="open-google-maps-btn" href="#" target="_blank" class="btn btn-secondary" style="display: none;">Open in Google Maps</a>
+  </p>
 
+  <!-- Hidden Map Container -->
+  <div id="map" style="width: 100%; height: 400px; display: none; margin-top: 20px;"></div>
 
-</p>
+  <script>
+    // Initialize map with product's location
+    function initMap() {
+      const productLocation = { lat: <%= @product.user.latitude %>, lng: <%= @product.user.longitude %> };
+
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 14,
+        center: productLocation
+      });
+
+      new google.maps.Marker({
+        position: productLocation,
+        map: map,
+        title: "<%= @product.name %>"
+      });
+    }
+
+    // Toggle map visibility and show Google Maps link on button click
+    document.getElementById("get-directions-btn").addEventListener("click", function() {
+      const mapDiv = document.getElementById("map");
+      const openGoogleMapsBtn = document.getElementById("open-google-maps-btn");
+
+      if (mapDiv.style.display === "none") {
+        mapDiv.style.display = "block";
+        openGoogleMapsBtn.style.display = "inline-block";
+
+        // Initialize map if not already loaded
+        if (!mapDiv.dataset.loaded) {
+          initMap();
+          mapDiv.dataset.loaded = true; // Prevent reloading the map
+        }
+
+        // Set the Google Maps directions link
+        const userLatitude = "<%= @product.user.latitude %>";
+        const userLongitude = "<%= @product.user.longitude %>";
+        openGoogleMapsBtn.href = `https://www.google.com/maps/dir/?api=1&destination=${userLatitude},${userLongitude}&travelmode=driving`;
+
+      } else {
+        mapDiv.style.display = "none";
+        openGoogleMapsBtn.style.display = "none";
+      }
+    });
+  </script>
+
+  <!-- Load Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dTtwwEAGoN92cz3JOxv63Zn1ef1Mwdw" async defer></script>
+</body>
+</html>
