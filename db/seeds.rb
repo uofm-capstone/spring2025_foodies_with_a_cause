@@ -4,8 +4,8 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+#   movies = Movie.create([{ food_type: "Star Wars" }, { food_type: "Lord of the Rings" }])
+#   Character.create(food_type: "Luke", movie: movies.first)
 
 
 
@@ -86,64 +86,64 @@ quinn = User.create!(
 
 # Seed Products associated with Users
 Product.create!(
-  name: "Apples",
-  amount: "5 crates",
+  food_type: "Apples",
+  quantity: 5,
   marketer: "Kroger Inc",
-  expiration: Date.new(2024, 11, 18),
-  hold: "3 days",
+  description: "Blemished apples that could be better use for a farm",
+  hold:"4 days",
   user: bob
 )
 
 Product.create!(
-  name: "Bananas",
-  amount: "10 crates",
+  food_type: "Bananas",
+  quantity: 10,
   marketer: "Kroger Inc",
-  expiration: Date.new(2024, 11, 24),
-  hold: "4 days",
+  description: "Blemished produce that could be better use for a farm",
+  hold:"7 days",
   user: michael
 )
 
 Product.create!(
-  name: "Lettuce",
-  amount: "7 crates",
+  food_type: "Lettuce",
+  quantity: 7,
   marketer: "Whole Foods",
-  expiration: Date.new(2024, 11, 15),
-  hold: "5 days",
+  description: "Blemished produce that could be better use for a farm",
+  hold:"5 days",
   user: alice
 )
 
 Product.create!(
-  name: "Tomatoes",
-  amount: "3 crates",
+  food_type: "Tomatoes",
+  quantity: 3,
   marketer: "Farm Fresh Co.",
-  expiration: Date.new(2024, 11, 10),
-  hold: "6 days",
+  description: "Blemished produce that could be better use for a farm",
+  hold:"2 days",
   user: buster
 )
 
 Product.create!(
-  name: "Carrots",
-  amount: "4 crates",
+  food_type: "Carrots",
+  quantity: 4,
   marketer: "Green Thumb Inc.",
-  expiration: Date.new(2024, 11, 20),
-  hold: "7 days",
+  description: "Blemished produce that could be better use for a farm",
+  hold:"6 days",
   user: quinn
 )
 
 Product.create!(
-  name: "Apples",
-  amount: "5 crates",
+  food_type: "Apples",
+  quantity: 5,
   marketer: "Kroger Inc",
-  expiration: Date.new(2024, 11, 18),
-  hold: "3 days",
+  description: "Blemished produce that could be better use for a farm",
+  hold:"5 days",
   user: bob
 )
 
 Product.create!(
-  name: "Lettuce",
-  amount: "5 crates",
+  food_type: "Lettuce",
+  quantity: 5,
   marketer: "Walmart",
-  expiration: Date.new(2024, 11, 3),
-  hold: "5 days",
+  description: "Blemished produce that could be better use for a farm",
+  hold:"2 days",
   user: michael
 )

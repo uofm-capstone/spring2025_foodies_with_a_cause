@@ -137,10 +137,10 @@
         <thead class="table-header">
             <tr>
                 <th>Marketer</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Expiration</th>
+                <th>Type of Food</th>
+                <th>Quantity</th>
                 <th>Hold Duration</th>
+                <th>Description</th>
             </tr>
         </thead>
 
@@ -153,10 +153,10 @@
                 <% @products.each do |product| %>
                     <tr>
                         <td><%= link_to product.marketer, product_path(product) %></td>
-                        <td><%= product.name %></td>
-                        <td><%= product.amount %></td>
-                        <td><%= product.expiration %></td>
+                        <td><%= product.food_type %></td>
+                        <td><%= product.quantity %></td>
                         <td><%= product.hold %></td>
+                        <td><%= product.description %></td>
                     </tr>
                 <% end %>
             <% end %>

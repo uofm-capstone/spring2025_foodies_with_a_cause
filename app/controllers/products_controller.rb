@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
 
   def index
     # Paginate @products, displaying 5 products per page
-    @products = Product.order(:expiration).page(params[:page]).per(5)
+    @products = Product.order(:hold).page(params[:page]).per(5)
     render :index
   end
 
@@ -49,6 +49,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :amount, :marketer, :expiration, :hold)
+    params.require(:product).permit(:food_type, :quantity, :marketer, :description, :hold)
   end
 end
