@@ -43,3 +43,25 @@ document.addEventListener("turbo:load", () => {
     }, 3000);
   });
 });
+
+document.addEventListener("turbo:load", () => {
+  // Check if the Google Maps API script is already added
+  if (!document.querySelector('script[src*="maps.googleapis.com"]')) {
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dTtwwEAGoN92cz3JOxv63Zn1ef1Mwdw&callback=initMap`;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
+});
+
+// Initialize Google Map
+window.initMap = function () {
+  const mapElement = document.getElementById("map");
+  if (mapElement) {
+    const map = new google.maps.Map(mapElement, {
+      center: { lat: -34.397, lng: 150.644 }, // Replace with your desired coordinates
+      zoom: 8,
+    });
+  }
+};
