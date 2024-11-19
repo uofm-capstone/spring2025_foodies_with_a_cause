@@ -7,7 +7,7 @@
       /* Container Styling */
       .login-container {
           max-width: 750px;
-          margin: 40px auto;
+          margin: auto;
           background-color: rgba(255, 255, 255, 0.8);
           padding: 40px;
           border-radius: 8px;
@@ -63,6 +63,8 @@
           background-size: cover;
           min-height: 100vh;
           margin: 0;
+          padding: 20px; /* Add padding to create space at the bottom */
+          box-sizing: border-box; /* Ensure padding doesn't affect layout */
       }
 
       /* Google Maps Styling */
@@ -119,10 +121,6 @@
             ], { prompt: 'Select your organization type' } %>
           </div>
 
-          <div class="field">
-            <%= f.label :location %><br />
-            <%= f.text_field :location %>
-          </div>
         </fieldset>
 
         <!-- Section 2: Account Information -->
