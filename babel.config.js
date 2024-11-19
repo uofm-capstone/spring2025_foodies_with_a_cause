@@ -1,82 +1,38 @@
-module.exports = function(api) {
-  var validEnv = ['development', 'test', 'production']
-  var currentEnv = api.env()
-  var isDevelopmentEnv = api.env('development')
-  var isProductionEnv = api.env('production')
-  var isTestEnv = api.env('test')
-
-  if (!validEnv.includes(currentEnv)) {
-    throw new Error(
-      'Please specify a valid `NODE_ENV` or ' +
-        '`BABEL_ENV` environment variables. Valid values are "development", ' +
-        '"test", and "production". Instead, received: ' +
-        JSON.stringify(currentEnv) +
-        '.'
-    )
-  }
+module.exports = function (api) {
+  api.cache(true);
 
   return {
     presets: [
-      isTestEnv && [
+      [
         '@babel/preset-env',
         {
-          targets: {
-            node: 'current'
-          }
-        }
-      ],
-      (isProductionEnv || isDevelopmentEnv) && [
-        '@babel/preset-env',
-        {
-          forceAllTransforms: true,
+          targets: '> 0.25%, not dead',
           useBuiltIns: 'entry',
           corejs: 3,
-          modules: false,
-          exclude: ['transform-typeof-symbol']
-        }
-      ]
-    ].filter(Boolean),
+        },
+      ],
+    ],
     plugins: [
-      'babel-plugin-macros',
-      '@babel/plugin-syntax-dynamic-import',
-      isTestEnv && 'babel-plugin-dynamic-import-node',
-      '@babel/plugin-transform-destructuring',
-      [
-        '@babel/plugin-proposal-class-properties',
-        {
-          loose: true
-        }
-      ],
-      [
-        '@babel/plugin-proposal-object-rest-spread',
-        {
-          useBuiltIns: true
-        }
-      ],
-      [
-        '@babel/plugin-proposal-private-methods',
-        {
-          loose: true
-        }
-      ],
-      [
-        '@babel/plugin-proposal-private-property-in-object',
-        {
-          loose: true
-        }
-      ],
-      [
-        '@babel/plugin-transform-runtime',
-        {
-          helpers: false
-        }
-      ],
-      [
-        '@babel/plugin-transform-regenerator',
-        {
-          async: false
-        }
-      ]
-    ].filter(Boolean)
-  }
-}
+      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-proposal-private-methods',
+      '@babel/plugin-proposal-private-property-in-object',
+      '@babel/plugin-proposal-optional-chaining',
+      '@babel/plugin-proposal-nullish-coalescing-operator',
+    ],
+    overrides: [
+      {
+        test: /node_modules\/@hotwired\/turbo/, // Ensure Turbo is transpiled
+        presets: [
+          [
+            '@babel/preset-env',
+            {
+              targets: '> 0.25%, not dead',
+              useBuiltIns: 'entry',
+              corejs: 3,
+            },
+          ],
+        ],
+      },
+    ],
+  };
+};
