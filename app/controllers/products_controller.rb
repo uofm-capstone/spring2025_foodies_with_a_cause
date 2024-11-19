@@ -7,12 +7,12 @@ class ProductsController < ApplicationController
     if params[:query].present?
       # Filter products by search query
       @products = Product.where("name ILIKE ?", "%#{params[:query]}%")
-                         .order(:expiration)
+                         .order(:hold)
                          .page(params[:page])
                          .per(5)
     else
       # Show all products with pagination if no search query
-      @products = Product.order(:expiration)
+      @products = Product.order(:hold)
                          .page(params[:page])
                          .per(5)
     end
