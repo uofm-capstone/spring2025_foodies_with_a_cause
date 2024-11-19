@@ -7,58 +7,68 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
+
+  <!-- Add Google Fonts Link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inspiration&display=swap" rel="stylesheet">
 </head>
 
 <body class="<%= 'login-page' if controller_name == 'sessions' && action_name == 'new' %>
              <%= 'signup-page' if controller_name == 'registrations' && action_name == 'new' %>">
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid justify-content-center">
-      <!-- Left-aligned Navigation Links -->
-      <ul class="navbar-nav me-auto left-nav">
-        <li class="nav-item">
-          <%= link_to 'Home', home_path, class: "nav-link active" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Market Hub', products_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'About Us', about_path, class: "nav-link" %>
-        </li>
-      </ul>
-      
-      <!-- Centered Logo -->
-      <%= link_to root_path, class: "logo mx-auto" do %>
-        <%= image_tag 'producebridge.jpg', alt: "ProduceBridge Logo", class: 'navbar-logo' %>
-      <% end %>
+    <!-- Left-aligned Navigation Links -->
+    <ul class="navbar-nav me-auto left-nav">
+      <li class="nav-item">
+        <%= link_to 'Market Hub', products_path, class: "nav-link" %>
+      </li>
+      <li class="divider">
+        <img src="<%= asset_path('greenplant.jpg') %>" alt="Plant Divider" class="link-divider">
+      </li>
+      <li class="nav-item">
+        <%= link_to 'About Us', about_path, class: "nav-link" %>
+      </li>
+    </ul>
 
-      <!-- Right-aligned Navigation Links -->
-      <ul class="navbar-nav ms-auto right-nav">
-          <li class="nav-item">
-            <%= link_to "How it Works", how_it_works_path, class: "nav-link" %>
-          </li>
-        </ul>
-  
-        <ul class="navbar-nav">
-          <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "Hi, #{current_user.full_name}", edit_user_registration_path, class: "nav-link #{active_class(edit_user_registration_path)}" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= button_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-link nav-link" %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to 'Log In', new_user_session_path, class: "nav-link" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+    <!-- Centered Produce Bridge Text -->
+    <div class="navbar-center">
+      <%= link_to root_path, class: "navbar-title-link" do %>
+        <img src="<%= asset_path('vine.jpg') %>" alt="Vines Left" class="navbar-vine left">
+        <h1 class="produce-bridge-title">Produce Bridge</h1>
+        <img src="<%= asset_path('vine.jpg') %>" alt="Vines Right" class="navbar-vine">
+      <% end %>
     </div>
+
+    <!-- Right-aligned Navigation Links -->
+    <ul class="navbar-nav ms-auto right-nav">
+      <li class="nav-item">
+        <%= link_to "How it Works", how_it_works_path, class: "nav-link" %>
+      </li>
+      <% if user_signed_in? %>
+        <li class="divider">
+          <img src="<%= asset_path('greenplant.jpg') %>" alt="Plant Divider" class="link-divider">
+        </li>
+        <li class="nav-item">
+          <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="divider">
+          <img src="<%= asset_path('greenplant.jpg') %>" alt="Plant Divider" class="link-divider">
+        </li>
+        <li class="nav-item">
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-link nav-link" %>
+        </li>
+      <% else %>
+        <li class="divider">
+          <img src="<%= asset_path('greenplant.jpg') %>" alt="Plant Divider" class="link-divider">
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Log In', new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
   </nav>
+
 
   <!-- Flash messages -->
   <div class="flash-container text-center" data-turbo="false">
