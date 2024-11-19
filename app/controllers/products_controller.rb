@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   def index
     if params[:query].present?
       # Filter products by search query
-      @products = Product.where("name ILIKE ?", "%#{params[:query]}%")
+      @products = Product.where("food_type ILIKE ?", "%#{params[:query]}%")
                          .order(:hold)
                          .page(params[:page])
                          .per(5)
