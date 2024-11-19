@@ -2,15 +2,15 @@
 #
 # Table name: products
 #
-#  id         :bigint           not null, primary key
-#  amount     :string
-#  expiration :date
-#  hold       :string
-#  marketer   :string
-#  name       :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint           not null
+#  id          :bigint           not null, primary key
+#  description :string
+#  food_type   :string
+#  hold        :string
+#  marketer    :string
+#  quantity    :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :bigint           not null
 #
 # Indexes
 #
