@@ -8,7 +8,7 @@ import "@hotwired/turbo-rails"; // Ensure Turbo is correctly imported
 import "bootstrap"; // Import Bootstrap
 
 import "controllers"; // Load Stimulus controllers if any
-import * as autosize from "autosize";
+import autosize from 'autosize';
 
 // Initialize Bootstrap popovers and tooltips on each Turbo load
 document.addEventListener("turbo:load", () => {
