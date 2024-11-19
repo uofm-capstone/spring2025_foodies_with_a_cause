@@ -18,10 +18,17 @@
 @import "yeti/bootswatch";
 
 @import "rails_bootstrap_forms";
+@import url('https://fonts.googleapis.com/css2?family=Inspiration&display=swap');
+
 
 label.required:after {
   content: " *";
 }
+
+html {
+  overflow-y: scroll;
+}
+
 
 main {
   margin-top: 150px;
@@ -45,81 +52,110 @@ a:hover {
   color: #29b97f;
 }
 
-/* Navbar Styles */
 .navbar {
-  position: fixed;
+  position: fixed; /* Ensure the navbar stays on top */
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgb(255, 255, 255);
   z-index: 1000;
-  padding: 20px 0;
+  background: white;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  padding: 40px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-bottom: 1px solid #83D87A; /* Light border */
+}
+
+.navbar-center {
+  position: absolute; /* Position the title absolutely */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Offset by half of its own width */
+  text-align: center;
   display: flex;
   align-items: center;
-  justify-content: center;
+  pointer-events: auto;
 }
 
-/* Logo in the center */
-.logo img {
-  height: 80px;
-  width: auto;
+.produce-bridge-title {
+  font-family: 'Inspiration', cursive;
+  font-size: 5rem; /* Adjust size as needed */
+  font-weight: bold;
+  margin: 0 10px;
+  color: #000000; /* Adjust color to match your theme */
 }
 
-/* Left and Right Navigation */
+.navbar-title-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.navbar-title-link:hover {
+  text-decoration: none; /* Prevent underline */
+}
+
+.navbar-vine {
+  height: 60px; /* Adjust height as needed */
+  width: auto; /* Maintain aspect ratio */
+  margin: 0 5px; /* Add spacing between the title and images */
+}
+
+.navbar-vine.left {
+  height: 60px; /* Set the height explicitly */
+  width: auto; /* Maintain aspect ratio */
+  transform: scaleX(-1); /* Flip the image */
+  object-fit: contain; /* Ensure the image fits within its container */
+  margin: 0 5px; /* Remove unexpected spacing */
+}
+
+
 .left-nav, .right-nav {
   display: flex;
-  align-items: center;
+  align-items: center; /* Ensure links are vertically centered */
 }
 
 .left-nav li, .right-nav li {
-  display: inline-flex; 
-  align-items: center;
-  margin: 0 15px;  
+  margin: 0 10px;
 }
 
-/* Dot Separators */
-.left-nav li::after, .right-nav li::after {
-  content: '•';
-  margin-left: 10px;
-  color: #29b97f;
-  font-size: 1.5rem;
-  line-height: 1;
-}
-
-/* Remove the last dot */
-.left-nav li:last-child::after, .right-nav li:last-child::after {
-  content: '';  
-}
-
-/* Navbar Link Styles */
 .navbar .nav-link {
   color: rgb(84, 73, 73);
   font-weight: bold;
-  font-size: 1rem;
 }
 
 .navbar .nav-link:hover {
   color: #29b97f;
 }
 
-/* Active Nav Link */
 .navbar .nav-link.active {
   color: #000;
-  font-weight: bold;
 }
 
-/* Center logo adjustment for responsive design */
-@media (max-width: 992px) {
+.link-divider {
+  height: 20px; /* Adjust size */
+  width: auto; /* Maintain aspect ratio */
+  margin: 0 1px; /* Add spacing between the links and dividers */
+  vertical-align: middle; /* Align with the text */
+}
+
+
+
+
+@media (max-width: 768px) {
   .navbar {
-    flex-direction: column;
+    padding: 15px 20px; /* Reduce padding on smaller screens */
   }
 
-  .left-nav, .right-nav {
-    justify-content: center;
+  .produce-bridge-title {
+    font-size: 2rem; /* Slightly smaller title for smaller screens */
   }
 
-  .logo {
-    margin: 20px 0;
+  .navbar .nav-link {
+    font-size: 1rem; /* Reduce font size for links */
   }
 }
 
