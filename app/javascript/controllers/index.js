@@ -1,24 +1,13 @@
-// Import the application instance
-import { application } from "controllers/application";
+// app/javascript/controllers/index.js
+import { application } from "./application";
 
-// Import Stimulus
-import { Application } from "@hotwired/stimulus";
-
-// Initialize Stimulus
-const stimulusApplication = Application.start();
-
-// Dynamically import and register controllers
-const context = require.context("controllers", true, /\.js$/);
-context.keys().forEach((key) => {
-  const controllerName = key.replace("./", "").replace(".js", "");
-  const controller = context(key).default;
-  if (controller) {
-    stimulusApplication.register(controllerName, controller);
-  }
+// Automatically register all controllers
+const context = require.context("./", true, /_controller\.js$/);
+const controllers = context.keys().map((key) => {
+  const controllerName = key.replace("./", "").replace(/_controller\.js$/, "");
+  const controllerModule = context(key).default;
+  application.register(controllerName, controllerModule);
+  return { name: controllerName, module: controllerModule };
 });
 
-// Eager load all controllers defined in the import map under controllers/**/*_controller
-eagerLoadControllersFrom("controllers", application);
-
-// Optionally enable lazy loading if you need it (comment out if not used)
-// lazyLoadControllersFrom("controllers", application);
+export default controllers;
