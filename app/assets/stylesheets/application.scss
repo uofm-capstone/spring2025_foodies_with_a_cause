@@ -18,7 +18,6 @@
 @import "yeti/bootswatch";
 
 @import "rails_bootstrap_forms";
-@import url('https://fonts.googleapis.com/css2?family=Inspiration&display=swap');
 
 
 label.required:after {
@@ -36,7 +35,7 @@ main {
 
 /* Global Styles */
 body {
-  font-family: Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   padding-top: 140px;  
   background-color: #f4f4f4;
@@ -78,13 +77,21 @@ a:hover {
   pointer-events: auto;
 }
 
-.produce-bridge-title {
-  font-family: 'Inspiration', cursive;
-  font-size: 5rem; /* Adjust size as needed */
-  font-weight: bold;
-  margin: 0 10px;
-  color: #000000; /* Adjust color to match your theme */
+@font-face {
+  font-family: 'Inspiration';
+  src: url('/fonts/inspiration-regular.woff2') format('woff2'),
+       url('/fonts/Inspiration-Regular.ttf') format('truetype'); /* Fallback */
+  font-display: swap; /* Fallback font displayed while loading */
 }
+
+.produce-bridge-title {
+  font-family: 'Inspiration', Arial, sans-serif; /* Use Inspiration font with fallback */
+  font-size: 5rem; /* Adjust size as needed */
+  text-align: center; /* Optional: Center the text */
+  color: #000000; /* Dark gray */
+  margin: 0 10;
+}
+
 
 .navbar-title-link {
   text-decoration: none;
@@ -126,6 +133,33 @@ a:hover {
   color: rgb(84, 73, 73);
   font-weight: bold;
 }
+
+.navbar .nav-button {
+  margin-top: 0; /* Aligns with the navbar links */
+  padding: 8px 20px; /* Adjust padding for a sleeker button */
+  font-size: 0.9rem; /* Slightly smaller text */
+  background-color: #3CB371;
+  color: white;
+  border: none;
+  border-radius: 15px; /* Reduce the curve */
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar .nav-button:hover {
+  background-color: #2e8b57;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px); /* Subtle lift */
+}
+
+.navbar .nav-button:active {
+  transform: translateY(0);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 
 .navbar .nav-link:hover {
   color: #29b97f;

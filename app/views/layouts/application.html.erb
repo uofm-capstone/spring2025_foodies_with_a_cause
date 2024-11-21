@@ -9,9 +9,7 @@
   <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
 
   <!-- Add Google Fonts Link -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inspiration&display=swap" rel="stylesheet">
+  <link rel="preload" href="/fonts/Inspiration-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 </head>
 
 <body class="<%= 'login-page' if controller_name == 'sessions' && action_name == 'new' %>
@@ -56,14 +54,14 @@
           <img src="<%= asset_path('greenplant.jpg') %>" alt="Plant Divider" class="link-divider">
         </li>
         <li class="nav-item">
-          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-link nav-link" %>
+          <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-link nav-button" %>
         </li>
       <% else %>
         <li class="divider">
           <img src="<%= asset_path('greenplant.jpg') %>" alt="Plant Divider" class="link-divider">
         </li>
         <li class="nav-item">
-          <%= link_to 'Log In', new_user_session_path, class: "nav-link" %>
+          <%= link_to 'Log In', new_user_session_path, class: "btn nav-button" %>
         </li>
       <% end %>
     </ul>

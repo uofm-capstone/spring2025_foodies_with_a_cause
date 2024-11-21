@@ -9,3 +9,6 @@ pin 'bootstrap', to: 'bootstrap.min.js', preload: true
 pin '@popperjs/core', to: 'popper.js', preload: true
 pin 'autosize', to: 'https://ga.jspm.io/npm:autosize@6.0.1/dist/autosize.esm.js'
 pin "@rails/ujs", to: "rails-ujs.js"
+pin "@hotwired/stimulus", to: "stimulus.min.js"
+pin "@hotwired/stimulus-loading", to: "stimulus-loading.js"
+pin_all_from "app/javascript/controllers", under: "controllers"
