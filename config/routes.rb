@@ -15,9 +15,12 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   
   # Messaging Routes
-  get 'users/:user_id/messages', to: 'messages#index', as: 'user_messages'
-  post 'users/:user_id/messages', to: 'messages#create'
-  get 'chat', to: 'messages#index', as: 'chat'
+# Messaging Routes
+get 'users/:user_id/messages', to: 'messages#index', as: 'user_messages'
+post 'users/:user_id/messages', to: 'messages#create'
+
+# Inbox Route
+get 'messages', to: 'messages#inbox', as: 'inbox'
 
   # Policies
   get 'privacy', to: 'pages#privacy', as: 'privacy'

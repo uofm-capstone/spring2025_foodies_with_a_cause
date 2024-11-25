@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inbox</title>
+  <style>
+    .inbox-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .no-messages {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #7f8c8d;
+      margin-top: 20px;
+    }
+
+    .message-item {
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .message-item h3 {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin: 0;
+    }
+
+    .message-item p {
+      margin: 5px 0;
+      color: #34495e;
+    }
+
+    .view-chat {
+      background-color: #29b97f;
+      color: white;
+      padding: 8px 12px;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+
+    .view-chat:hover {
+      background-color: #24a571;
+    }
+  </style>
+</head>
+<body>
+  <div class="inbox-container">
+    <h1>Your Inbox</h1>
+
+    <% if @messages.any? %>
+      <% @messages.group_by(&:sender).each do |sender, messages| %>
+        <div class="message-item">
+          <div>
+            <h3><%= sender.full_name %></h3>
+            <p><%= messages.first.content.truncate(50) %></p>
+          </div>
+          <a href="<%=  user_messages_path(sender) %>" class="view-chat">View Chat</a>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-messages">No current messages for you.</p>
+    <% end %>
+  </div>
+</body>
+</html>

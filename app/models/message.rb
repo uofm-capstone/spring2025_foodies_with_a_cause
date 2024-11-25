@@ -19,4 +19,8 @@ class Message < ApplicationRecord
   belongs_to :receiver, class_name: "User", foreign_key: "receiver_id"
 
   validates :content, presence: true
+
+  scope :between_users, ->(user1, user2) {
+    where(sender: user1, receiver: user2).or(where(sender: user2, receiver: user1))
+  }
 end
