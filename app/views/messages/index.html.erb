@@ -108,6 +108,7 @@
     }
   </style>
 </head>
+</head>
 <body>
 
   <div class="chat-container">
@@ -127,7 +128,7 @@
         <% end %>
       </div>
 
-      <%= form_with model: [@receiver, Message.new], local: true do |form| %>
+      <%= form_with model: [@receiver, Message.new], local: false do |form| %>
         <div>
           <%= form.text_area :content, placeholder: "Type a message...", rows: 3 %>
         </div>
@@ -139,30 +140,33 @@
   </div>
 
   <script>
-  // Establish a WebSocket connection to the ActionCable server
-  const chatChannel = new WebSocket(`wss://${window.location.host}/cable`);
+    // Establish a WebSocket connection to the ActionCable server
+    const chatChannel = new WebSocket(`wss://${window.location.host}/cable`);
 
-  // Reference to the messages container
-  const messagesContainer = document.getElementById('messages');
+    // Reference to the messages container
+    const messagesContainer = document.getElementById('messages');
 
-  // Event listener for receiving new messages
-  chatChannel.onmessage = (event) => {
-    const message = JSON.parse(event.data);
+    // Event listener for receiving new messages
+    chatChannel.onmessage = (event) => {
+      const message = JSON.parse(event.data);
 
-    // Ensure the message content is not undefined or empty before updating the page
-    if (message.content && message.content.trim() !== "") {
-      const messageElement = document.createElement('p');
-      messageElement.className = message.sender_id === <%= current_user.id %> ? 'sender' : '';
-      messageElement.innerHTML = `<strong>${message.sender_name}:</strong> ${message.content}`;
-      messagesContainer.appendChild(messageElement);
+      // Ensure the message content is not undefined or empty before updating the page
+      if (message.content && message.content.trim() !== "") {
+        const messageElement = document.createElement('p');
+        messageElement.className = message.sender_id === <%= current_user.id %> ? 'sender' : '';
+        messageElement.innerHTML = `<strong>${message.sender_name}:</strong> ${message.content}`;
+        messagesContainer.appendChild(messageElement);
 
-      // Scroll to the bottom
+        // Scroll to the bottom when a new message is received
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+    };
+
+    // Automatically scroll to the bottom of the chat container when the page is loaded
+    window.onload = () => {
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-  };
-</script>
-
-
+    };
+  </script>
 
 </body>
 </html>
