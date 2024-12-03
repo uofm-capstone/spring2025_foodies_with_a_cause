@@ -128,7 +128,7 @@
         <% end %>
       </div>
 
-      <%= form_with model: [@receiver, Message.new], local: false do |form| %>
+      <%= form_with model: [@receiver, Message.new], local: true do |form| %>
         <div>
           <%= form.text_area :content, placeholder: "Type a message...", rows: 3 %>
         </div>
