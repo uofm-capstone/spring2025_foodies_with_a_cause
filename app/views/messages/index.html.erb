@@ -148,15 +148,20 @@
   // Event listener for receiving new messages
   chatChannel.onmessage = (event) => {
     const message = JSON.parse(event.data);
-    const messageElement = document.createElement('p');
-    messageElement.className = message.sender_id === <%= current_user.id %> ? 'sender' : '';
-    messageElement.innerHTML = `<strong>${message.sender_name}:</strong> ${message.content}`;
-    messagesContainer.appendChild(messageElement);
 
-    // Scroll to the bottom
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    // Ensure the message content is not undefined or empty before updating the page
+    if (message.content && message.content.trim() !== "") {
+      const messageElement = document.createElement('p');
+      messageElement.className = message.sender_id === <%= current_user.id %> ? 'sender' : '';
+      messageElement.innerHTML = `<strong>${message.sender_name}:</strong> ${message.content}`;
+      messagesContainer.appendChild(messageElement);
+
+      // Scroll to the bottom
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
   };
 </script>
+
 
 
 </body>
