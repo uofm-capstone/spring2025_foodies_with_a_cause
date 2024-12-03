@@ -95,3 +95,4 @@ window.initMap = function () {
 
 // Stimulus controllers
 import "controllers";
+import "./channels"
