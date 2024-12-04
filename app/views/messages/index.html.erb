@@ -94,6 +94,7 @@
     }
   </style>
 </head>
+</head>
 <body>
 
   <div class="chat-container">
@@ -125,12 +126,34 @@
   </div>
 
   <script>
-    // Auto-scroll to the bottom of the chatbox
-    const messagesDiv = document.querySelector("#messages");
-    if (messagesDiv) {
-      messagesDiv.scrollTop = messagesDiv.scrollHeight;
-    }
+    // Establish a WebSocket connection to the ActionCable server
+    const chatChannel = new WebSocket(`wss://${window.location.host}/cable`);
+
+    // Reference to the messages container
+    const messagesContainer = document.getElementById('messages');
+
+    // Event listener for receiving new messages
+    chatChannel.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+
+      // Ensure the message content is not undefined or empty before updating the page
+      if (message.content && message.content.trim() !== "") {
+        const messageElement = document.createElement('p');
+        messageElement.className = message.sender_id === <%= current_user.id %> ? 'sender' : '';
+        messageElement.innerHTML = `<strong>${message.sender_name}:</strong> ${message.content}`;
+        messagesContainer.appendChild(messageElement);
+
+        // Scroll to the bottom when a new message is received
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+    };
+
+    // Automatically scroll to the bottom of the chat container when the page is loaded
+    window.onload = () => {
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    };
   </script>
+
 
 </body>
 </html>
