@@ -29,45 +29,6 @@ document.addEventListener("turbo:load", () => {
   });
 });
 
-// Function to initialize SVG vine animation
-function initializeVineAnimation() {
-  const hero = document.querySelector(".hero");
-  const svg = document.querySelector(".vines-svg");
-  const path = document.querySelector(".vine-path");
-
-  if (hero && svg && path) {
-    const heroWidth = hero.offsetWidth;
-    const heroHeight = hero.offsetHeight;
-
-    // Update the SVG viewBox to match hero dimensions
-    svg.setAttribute("viewBox", `0 0 ${heroWidth} ${heroHeight}`);
-
-    // Create a path to trace the border
-    const pathData = `
-      M0,0
-      H${heroWidth}
-      V${heroHeight}
-      H0
-      Z
-    `;
-    path.setAttribute("d", pathData);
-
-    // Calculate the path length and apply stroke properties
-    const pathLength = path.getTotalLength();
-    path.style.strokeDasharray = pathLength;
-    path.style.strokeDashoffset = pathLength;
-
-    // Trigger the animation
-    path.style.animation = "draw-border 5s linear forwards";
-
-    console.log(
-      `Hero SVG animation triggered. Dimensions: ${heroWidth}x${heroHeight}, Path length: ${pathLength}`
-    );
-  } else {
-    console.warn("Hero SVG or path element not found.");
-  }
-}
-
 // Trigger SVG vine animation on DOMContentLoaded
 document.addEventListener("DOMContentLoaded", initializeVineAnimation);
 
