@@ -29,6 +29,11 @@ get 'messages', to: 'messages#inbox', as: 'inbox'
   # Product Routes
   resources :products, only: [:index, :show, :new, :create, :destroy]
 
+  resources :users do
+    resources :notifications, only: [:index, :show], controller: 'user_notifications'
+  end
+  
+
 
 
 end

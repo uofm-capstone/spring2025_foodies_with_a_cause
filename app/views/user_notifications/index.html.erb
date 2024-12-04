@@ -1,0 +1,16 @@
+<h1>Your Notifications</h1>
+
+<% if @notifications.any? %>
+  <ul>
+    <% @notifications.each do |notification| %>
+      <li>
+        <%= notification.message.content %> 
+        <% if !notification.read %>
+          <span class="badge bg-warning text-dark">Unread</span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No notifications yet.</p>
+<% end %>

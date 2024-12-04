@@ -147,3 +147,9 @@ Product.create!(
   hold:"2 days",
   user: michael
 )
+
+message1 = Message.create(sender: bob, receiver: alice, content: 'Hello Alice!', read: false)
+message2 = Message.create(sender: bob, receiver: alice, content: 'Did you receive my message?', read: false)
+
+UserNotification.create(user: alice, message: message1, read: false)
+UserNotification.create(user: alice, message: message2, read: false)

@@ -6,6 +6,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css", media: "all" %>
   <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
 
   <!-- Add Google Fonts Link -->
@@ -22,14 +23,10 @@
         <%= link_to 'Market Hub', products_path, class: "nav-link" %>
       </li>
       <li class="divider">
-        <img src="<%= asset_path('greenplant.jpg') %>" alt="Plant Divider" class="link-divider">
+        <img src="<%= asset_path('leaf.jpeg') %>" alt="Plant Divider" class="link-divider">
       </li>
       <li class="nav-item">
         <%= link_to 'About Us', about_path, class: "nav-link" %>
-      </li>
-            <!-- Inbox Button -->
-      <li class="nav-item">
-        <%= link_to 'Inbox', inbox_path, class: "nav-link" %>
       </li>
     </ul>
 
@@ -48,22 +45,22 @@
         <%= link_to "How it Works", how_it_works_path, class: "nav-link" %>
       </li>
       <% if user_signed_in? %>
-        <li class="divider">
-          <img src="<%= asset_path('greenplant.jpg') %>" alt="Plant Divider" class="link-divider">
-        </li>
+        <div class="notifications">
+          <%= link_to inbox_path, class: "nav-link" do %>
+            <i class="fa fa-envelope"></i>
+            <% unread_count = Message.where(receiver: current_user, read: false).count %>
+            <% if unread_count > 0 %>
+              <span class="badge"><%= unread_count %></span>
+            <% end %>
+          <% end %>
+        </div>
         <li class="nav-item">
           <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
-        </li>
-        <li class="divider">
-          <img src="<%= asset_path('greenplant.jpg') %>" alt="Plant Divider" class="link-divider">
         </li>
         <li class="nav-item">
           <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-link nav-button" %>
         </li>
       <% else %>
-        <li class="divider">
-          <img src="<%= asset_path('greenplant.jpg') %>" alt="Plant Divider" class="link-divider">
-        </li>
         <li class="nav-item">
           <%= link_to 'Log In', new_user_session_path, class: "btn nav-button" %>
         </li>

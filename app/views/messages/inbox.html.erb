@@ -55,6 +55,15 @@
     .view-chat:hover {
       background-color: #24a571;
     }
+
+    .unread-dot {
+      height: 10px;
+      width: 10px;
+      background-color: red;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 10px;
+    }
   </style>
 </head>
 <body>
@@ -65,10 +74,14 @@
       <% @messages.group_by(&:sender).each do |sender, messages| %>
         <div class="message-item">
           <div>
+            <% unread = messages.any? { |message| !message.read } %>
+            <% if unread %>
+              <span class="unread-dot"></span>
+            <% end %>
             <h3><%= sender.full_name %></h3>
             <p><%= messages.first.content.truncate(50) %></p>
           </div>
-          <a href="<%=  user_messages_path(sender) %>" class="view-chat">View Chat</a>
+          <a href="<%= user_messages_path(sender) %>" class="view-chat">View Chat</a>
         </div>
       <% end %>
     <% else %>

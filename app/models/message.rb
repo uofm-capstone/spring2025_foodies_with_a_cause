@@ -4,6 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  content     :text
+#  read        :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  receiver_id :integer          not null
@@ -17,6 +18,7 @@
 class Message < ApplicationRecord
   belongs_to :sender, class_name: "User", foreign_key: "sender_id"
   belongs_to :receiver, class_name: "User", foreign_key: "receiver_id"
+  has_many :user_notifications, dependent: :destroy
 
   validates :content, presence: true
 

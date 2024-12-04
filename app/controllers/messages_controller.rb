@@ -4,21 +4,39 @@ class MessagesController < ApplicationController
 
   # Show conversation between current user and another user
   def index
-    @messages = Message.between_users(current_user, @receiver).order(:created_at)
+    @messages = Message
+                  .where(sender: @receiver, receiver: current_user)
+                  .or(Message.where(sender: current_user, receiver: @receiver))
+                  .order(:created_at)
+
+    # Mark all unread messages in this conversation as read
+    Message.where(sender: @receiver, receiver: current_user, read: false).update_all(read: true)
   end
 
-  # Show all messages sent to the current user
+  # Show all conversations (Inbox)
   def inbox
-    @messages = Message.where(receiver: current_user).order(created_at: :desc)
+    # Fetch all messages sent to or received by the current user
+    @messages = Message.where(receiver: current_user).includes(:sender).order(created_at: :desc)
   end
 
   # Send a message
   def create
     @message = current_user.sent_messages.build(message_params.merge(receiver: @receiver))
+
     if @message.save
+      # Create a notification for the receiver
+      UserNotification.create(user: @receiver, message: @message, read: false)
+
+      # Broadcast the new message to the receiver via ActionCable
+      NotificationChannel.broadcast_to(
+        @receiver,
+        render_to_string(partial: 'messages/message', locals: { message: @message })
+      )      
+
+      flash[:success] = "Message sent successfully!"
       redirect_to user_messages_path(@receiver)
     else
-      @messages = Message.between_users(current_user, @receiver).order(:created_at)
+      flash[:error] = "Failed to send message."
       render :index
     end
   end

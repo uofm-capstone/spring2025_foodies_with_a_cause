@@ -2,7 +2,6 @@ console.log("Reusable logic loaded!");
 
 // Autosize textareas
 import autosize from "autosize";
-
 // Initialize autosize on textareas
 document.addEventListener("turbo:load", () => {
   autosize(document.querySelectorAll("textarea"));
@@ -93,5 +92,15 @@ window.initMap = function () {
   }
 };
 
+import consumer from "./consumer";
+
+consumer.subscriptions.create("NotificationChannel", {
+  received(data) {
+    console.log("Received data:", data);
+    // Handle incoming data from the NotificationChannel
+  }
+});
+
 // Stimulus controllers
 import "controllers";
+import "./channels"

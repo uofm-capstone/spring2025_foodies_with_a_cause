@@ -4,6 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  content     :text
+#  read        :boolean          default(FALSE), not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  receiver_id :integer          not null
