@@ -1,15 +1,46 @@
-import consumer from "./consumer"
+// import { Controller } from "@hotwired/stimulus";
+// import consumer from "../channels/consumer";
 
-consumer.subscriptions.create("ChatChannel", {
-  connected() {
-    // Called when the subscription is ready for use on the server
-  },
+// export default class extends Controller {
+//   static targets = ["messages"];
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+//   connect() {
+//     const currentUserId = this.element.dataset.currentUserId;
+//     const receiverId = this.element.dataset.receiverId;
+//     const channelName = `chat_channel_${[currentUserId, receiverId].sort().join("_")}`;
 
-  received(data) {
-    // Called when there's incoming data on the websocket for this channel
-  }
-});
+//     this.subscription = consumer.subscriptions.create(
+//       { channel: "ChatChannel", current_user_id: currentUserId, receiver_id: receiverId },
+//       {
+//         received: (data) => {
+//           this.appendMessage(data);
+//         }
+//       }
+//     );
+
+//     console.log(`Subscribed to ${channelName}`);
+//   }
+
+//   disconnect() {
+//     this.subscription.unsubscribe();
+//     console.log("Unsubscribed from chat channel");
+//   }
+
+//   appendMessage(data) {
+//     const messageHTML = `
+//       <div class="message-container ${data.sender_id == this.element.dataset.currentUserId ? 'sender' : 'receiver'}">
+//         <div class="message ${data.sender_id == this.element.dataset.currentUserId ? 'sent' : 'received'}">
+//           <p>${data.content}</p>
+//           <small>${data.created_at}</small>
+//         </div>
+//       </div>
+//     `;
+
+//     this.messagesTarget.insertAdjacentHTML("beforeend", messageHTML);
+//     this.scrollToBottom();
+//   }
+
+//   scrollToBottom() {
+//     this.messagesTarget.scrollTop = this.messagesTarget.scrollHeight;
+//   }
+// }
