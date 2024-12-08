@@ -92,5 +92,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.log_level = :debug
+  config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+
 
 end
