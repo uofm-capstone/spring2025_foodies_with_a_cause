@@ -1,13 +1,6 @@
-// app/javascript/controllers/index.js
-import { application } from "./application";
+import { Application } from "@hotwired/stimulus";
+import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers";
 
-// Automatically register all controllers
-const context = require.context("./", true, /_controller\.js$/);
-const controllers = context.keys().map((key) => {
-  const controllerName = key.replace("./", "").replace(/_controller\.js$/, "");
-  const controllerModule = context(key).default;
-  application.register(controllerName, controllerModule);
-  return { name: controllerName, module: controllerModule };
-});
-
-export default controllers;
+const application = Application.start();
+const context = require.context(".", true, /\.js$/); // Auto-load all controllers
+application.load(definitionsFromContext(context));

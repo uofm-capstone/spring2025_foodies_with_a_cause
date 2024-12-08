@@ -1,4 +1,6 @@
-<div class="message <%= message.sender == current_user ? 'sent' : 'received' %>">
-  <p><%= message.content %></p>
-  <small><%= message.created_at.strftime('%Y-%m-%d %H:%M:%S') %></small>
+<div class="message-container <%= message.sender_id == current_user_id ? 'sender' : 'receiver' %>">
+  <div class="message <%= message.sender_id == current_user_id ? 'sent' : 'received' %>">
+    <p><%= message.content %></p>
+    <small><%= message.created_at.strftime('%Y-%m-%d %H:%M') %></small>
+  </div>
 </div>

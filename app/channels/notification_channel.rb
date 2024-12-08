@@ -1,13 +1,10 @@
 class NotificationChannel < ApplicationCable::Channel
   def subscribed
-    if current_user
-      stream_from "notifications_#{current_user.id}"
-    else
-      reject
-    end
+    stream_from "notifications_#{current_user.id}"
+    Rails.logger.info "Subscribed to NotificationChannel for notifications_#{current_user.id}"
   end
 
   def unsubscribed
-    # Cleanup when channel is unsubscribed
+    Rails.logger.info "Unsubscribed from NotificationChannel"
   end
 end

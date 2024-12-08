@@ -50,6 +50,10 @@ default: &default
 development:
   <<: *default
   compile: true
+  extract_css: true
+  cache_manifest: false
+  gzip_compression: false
+  brotli_compression: false
 
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
