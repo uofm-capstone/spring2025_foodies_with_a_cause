@@ -50,12 +50,17 @@ class MessagesController < ApplicationController
       )
   
       respond_to do |format|
-        format.html { head :ok } # Avoid full-page redirect
+        format.turbo_stream
+        format.html { redirect_to user_messages_path(@receiver), notice: 'Message sent.' }
       end
     else
-      render :index, alert: 'Failed to send message.'
+      respond_to do |format|
+        format.html { redirect_to user_messages_path(@receiver), alert: 'Failed to send message.' }
+      end
     end
   end
+  
+  
   
   
   

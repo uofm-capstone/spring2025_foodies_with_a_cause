@@ -16,6 +16,8 @@ module RailsDemosNDeets2023Apps
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
+    config.time_zone = 'Central Time (US & Canada)'  # Example for CST
+    config.active_record.default_timezone = :local   # Store times in the database as local time
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
   end

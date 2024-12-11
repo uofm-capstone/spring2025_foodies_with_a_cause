@@ -11,58 +11,119 @@ console.log("Application JS loaded");
 import "bootstrap";
 import autosize from "autosize";
 
-// -------------------------------
-// Save and Restore Scroll Position
-// -------------------------------
-
+// Scrolling functions
 function saveScrollPosition() {
   const messagesContainer = document.getElementById("messages");
-  if (messagesContainer) sessionStorage.setItem("scrollPosition", messagesContainer.scrollTop);
+  if (messagesContainer) {
+    sessionStorage.setItem("scrollPosition", messagesContainer.scrollTop);
+  }
 }
 
-document.addEventListener("turbo:before-visit", saveScrollPosition);
-document.addEventListener("turbo:submit-start", saveScrollPosition);
-document.addEventListener("turbo:load", () => {
+function restoreScrollPosition() {
   const messagesContainer = document.getElementById("messages");
   const savedPosition = sessionStorage.getItem("scrollPosition");
   if (messagesContainer && savedPosition !== null) {
     messagesContainer.scrollTop = parseInt(savedPosition, 10);
     sessionStorage.removeItem("scrollPosition");
   }
-  autosize(document.querySelectorAll("textarea"));
-});
+}
 
-// -------------------------------
-// Scroll to Bottom of Chat Logic
-// -------------------------------
-
-function scrollToBottomInstantly() {
+window.scrollToBottomInstantly = function () {
   const messagesContainer = document.getElementById("messages");
   if (messagesContainer) {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
+};
+
+
+// timestamps
+
+function updateMessageTimestamps() {
+  const timestamps = document.querySelectorAll(".message-timestamp");
+
+  timestamps.forEach((element) => {
+    const timestamp = element.getAttribute("data-timestamp");
+    if (timestamp) {
+      const date = new Date(timestamp);
+
+      // Format the date to the user's local timezone
+      const options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+      };
+
+      element.textContent = date.toLocaleString(undefined, options);
+    } else {
+      console.error("Invalid timestamp:", element);
+    }
+  });
 }
 
-// Scroll to the bottom when a new message is appended via Turbo Stream
-document.addEventListener("turbo:before-stream-render", (event) => {
-  if (event.detail.newStream.action === "append") {
-    requestAnimationFrame(scrollToBottomInstantly);
-  }
+// Call this function on page load
+document.addEventListener("turbo:load", () => {
+  updateMessageTimestamps();
 });
 
-// Scroll to the bottom on initial page load and after Turbo navigation
-document.addEventListener("DOMContentLoaded", scrollToBottomInstantly);
-document.addEventListener("turbo:load", scrollToBottomInstantly);
 
-// -------------------------------
-// Submit Button Handling
-// -------------------------------
+// Extra event listeners
+document.addEventListener("turbo:before-visit", saveScrollPosition);
+document.addEventListener("turbo:submit-start", saveScrollPosition);
 
+document.addEventListener("turbo:load", () => {
+  console.log("turbo:load event fired");
+  restoreScrollPosition();
+  autosize(document.querySelectorAll("textarea"));
+  scrollToBottomInstantly();
+});
+
+document.addEventListener("turbo:before-stream-render", () => {
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      console.log("Turbo Stream rendered. Scrolling to bottom.");
+      scrollToBottomInstantly();
+    }, 100);
+  });
+});
+
+document.addEventListener("turbo:before-stream-render", () => {
+  console.log("Event listener triggered");
+
+  requestAnimationFrame(() => {
+    console.log("requestAnimationFrame executed");
+
+    const messagesContainer = document.getElementById("messages");
+    console.log("messagesContainer:", messagesContainer);
+
+    if (messagesContainer) {
+      const newMessage = messagesContainer.lastElementChild;
+      console.log("newMessage:", newMessage);
+
+      if (newMessage) {
+        newMessage.classList.add("new-message-highlight");
+        console.log("Highlight class added");
+
+        setTimeout(() => {
+          newMessage.classList.remove("new-message-highlight");
+          console.log("Highlight class removed");
+        }, 1000);
+      }
+    }
+  });
+});
+
+
+
+
+// Submit button handling
 document.addEventListener("turbo:submit-start", (event) => {
   const submitButton = event.target.querySelector("input[type='submit']");
   if (submitButton) {
     submitButton.disabled = true;
-    submitButton.value = "Sending...";
+    submitButton.value = "Processing...";
   }
 });
 
@@ -72,16 +133,12 @@ document.addEventListener("turbo:submit-end", (event) => {
   if (textarea) textarea.value = "";
   if (submitButton) {
     submitButton.disabled = false;
-    submitButton.value = "Send";
+    submitButton.value = "Submit";
   }
-  // Scroll to the bottom after a successful form submission
   scrollToBottomInstantly();
 });
 
-// -------------------------------
-// Additional Turbo Event Listeners
-// -------------------------------
-
+// CSRF token handling
 document.addEventListener("turbo:before-fetch-request", (event) => {
   const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
   event.detail.fetchOptions.headers["X-CSRF-Token"] = csrfToken;
