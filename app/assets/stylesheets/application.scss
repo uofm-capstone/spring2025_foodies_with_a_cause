@@ -390,3 +390,18 @@ footer {
   padding: 0.2rem 0.4rem;
 }
 
+@keyframes flashHighlight {
+  0% {
+    background-color: #ffff99; /* Light yellow */
+  }
+  100% {
+    background-color: inherit;
+  }
+}
+
+.new-message-highlight {
+  animation: flashHighlight 1s ease;
+}
+
+
+
