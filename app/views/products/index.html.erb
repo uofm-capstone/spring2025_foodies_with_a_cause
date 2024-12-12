@@ -34,7 +34,7 @@
         }
 
         .new-btn {
-            background-color: #1a6434; /* Darker green */
+            background-color: #1a6434;
             color: white;
             padding: 10px 20px;
             font-size: 1.1rem;
@@ -45,7 +45,7 @@
         }
 
         .new-btn:hover {
-            background-color: #14502b; /* Even darker green on hover */
+            background-color: #14502b;
         }
 
         /* Table Styles */
@@ -56,14 +56,14 @@
         }
 
         .table-header {
-            background-color: #1a6434; /* Darker green */
+            background-color: #1a6434;
             color: white;
             font-weight: bold;
         }
 
         .table-header th {
             padding: 12px;
-            border: 1px solid black; /* Black borders */
+            border: 1px solid black;
         }
 
         .table tbody td {
@@ -74,7 +74,7 @@
 
         /* Row coloring */
         .table tbody tr:nth-child(even) td {
-            background-color: #d3e4d7; /* Light green tint for alternating rows */
+            background-color: #d3e4d7;
         }
 
         /* Map container styling */
@@ -87,40 +87,46 @@
 
         /* Pagination Styling */
         .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px; /* Consistent spacing between buttons */
+        margin-top: 20px;
         }
 
+        /* Fix for nested buttons in pagination */
         .pagination a,
         .pagination span {
-            margin: 0 5px;
-            padding: 8px 12px;
-            text-decoration: none;
-            color: #1a6434; /* Darker green text */
-            background-color: white; /* White background */
-            border: 1px solid #1a6434; /* Green border */
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+        display: inline-block;
+        padding: 8px 12px;
+        text-decoration: none;
+        color: #1a6434;
+        background-color: white;
+        border: 1px solid #1a6434;
+        border-radius: 5px;
+        box-shadow: none;
+        outline: none;
         }
 
+        /* Remove any inner button styling */
+        .pagination a *,
+        .pagination span * {
+        all: unset; /* Resets all styles on nested elements */
+        }
+
+
+        /* Hover and Active States */
         .pagination a:hover,
-        .pagination span:hover {
-            background-color: #1a6434; /* Dark green background on hover */
-            color: white; /* White text on hover */
-            border: 1px solid #1a6434;
+        .pagination span:hover,
+        .pagination .active span {
+        background-color: #1a6434; /* Dark green background */
+        color: white; /* White text */
         }
 
-        /* Active Page Styling */
-        .pagination .active span {
-            background-color: #1a6434;
-            color: white;
-            border: 1px solid #1a6434;
-        }
+
     </style>
 
     <!-- Google Maps JavaScript API -->
-    
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dTtwwEAGoN92cz3JOxv63Zn1ef1Mwdw&callback=initMap" async defer></script>
 </head>
 <body>
@@ -129,12 +135,12 @@
     <h1>On the Market Nearby</h1>
 
     <!-- Search Form -->
-  <%= form_with url: products_path, method: :get, local: true, class: "search-form" do |form| %>
-    <div class="input-group mb-3">
-      <%= form.text_field :query, placeholder: "Search products by name...", class: "form-control" %>
-      <%= form.submit "Search", class: "btn btn-primary" %>
-    </div>
-  <% end %>
+    <%= form_with url: products_path, method: :get, local: true, class: "search-form" do |form| %>
+        <div class="input-group mb-3">
+            <%= form.text_field :query, placeholder: "Search products by name...", class: "form-control" %>
+            <%= form.submit "Search", class: "btn btn-primary" %>
+        </div>
+    <% end %>
 
     <!-- New Product Button -->
     <p>
@@ -177,41 +183,41 @@
         <%= paginate @products %>
     </div>
 
-   <!-- Google Map -->
-<div id="map"></div>
+    <!-- Google Map -->
+    <div id="map"></div>
 
-<script>
-  function initMap() {
-    const memphis = { lat: 35.1495, lng: -90.0490 };
+    <script>
+        function initMap() {
+            const memphis = { lat: 35.1495, lng: -90.0490 };
 
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 11,
-      center: memphis
-    });
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 11,
+                center: memphis
+            });
 
-    const products = <%= raw @products.to_json(only: [:id, :marketer], include: { user: { only: [:latitude, :longitude, :location] } }) %>;
+            const products = <%= raw @products.to_json(only: [:id, :marketer], include: { user: { only: [:latitude, :longitude, :location] } }) %>;
 
-    products.forEach(product => {
-      if (product.user.latitude && product.user.longitude) {
-        const position = {
-          lat: product.user.latitude,
-          lng: product.user.longitude
-        };
+            products.forEach(product => {
+                if (product.user.latitude && product.user.longitude) {
+                    const position = {
+                        lat: product.user.latitude,
+                        lng: product.user.longitude
+                    };
 
-        const marker = new google.maps.Marker({
-          position: position,
-          map: map,
-          title: product.marketer
-        });
+                    const marker = new google.maps.Marker({
+                        position: position,
+                        map: map,
+                        title: product.marketer
+                    });
 
-        marker.addListener("click", () => {
-          window.location.href = "/products/" + product.id;
-        });
-      }
-    });
-  }
+                    marker.addListener("click", () => {
+                        window.location.href = "/products/" + product.id;
+                    });
+                }
+            });
+        }
 
-    window.onload = initMap;
-</script>
+        window.onload = initMap;
+    </script>
 </body>
 </html>
