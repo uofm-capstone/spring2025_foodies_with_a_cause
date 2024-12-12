@@ -1,14 +1,31 @@
-<h1>New Product</h1>
- 
-<%= bootstrap_form_with model: @product, url: products_path, method: :post, data: { turbo: false } do |f| %>
- <%= f.text_field :food_type %>
- <%= f.text_field :quantity %>
- <%= f.text_field :marketer %>
- <%= f.text_field :hold %>
- <%= f.text_field :description %>
- <%= f.submit %>
-<% end %>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">New Product</h1>
 
-<p>
-  <%= link_to "Back", products_path, class: 'btn btn-primary' %>
-</p>
+  <%= bootstrap_form_with model: @product, url: products_path, method: :post, data: { turbo: false } do |f| %>
+    <div class="mb-3">
+      <%= f.text_field :food_type, class: 'form-control', placeholder: 'Food Type' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.text_field :quantity, class: 'form-control', placeholder: 'Quantity' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.text_field :marketer, class: 'form-control', placeholder: 'Marketer' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.text_field :hold, class: 'form-control', placeholder: 'Hold Duration' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.text_field :description, class: 'form-control', placeholder: 'Description' %>
+    </div>
+
+    <%= f.submit 'Submit', class: 'btn btn-success w-100' %>
+  <% end %>
+
+  <p class="mt-3">
+    <%= link_to "Back", products_path, class: 'btn btn-primary' %>
+  </p>
+</div>
