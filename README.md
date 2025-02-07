@@ -23,3 +23,7 @@ Things you may want to cover:
 
 * ...
 # rails-demos-n-deets-2023-apps
+
+## Team Documents  
+- [Team Contract](https://docs.google.com/document/d/1tbXNmJYMwqdHkcjde1XJgG0GoCiBV2WF23c4c5wI3Uo/edit?usp=sharing)  
+- [Timesheet](https://docs.google.com/spreadsheets/d/1dJXsHF3kowoHCIZ-x002uTObKGMw5I6yy0T6vUkryiU/edit?usp=sharing) 
