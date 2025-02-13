@@ -26,4 +26,10 @@ Things you may want to cover:
 
 ## Team Documents  
 - [Team Contract](https://docs.google.com/document/d/1tbXNmJYMwqdHkcjde1XJgG0GoCiBV2WF23c4c5wI3Uo/edit?usp=sharing)  
-- [Timesheet](https://docs.google.com/spreadsheets/d/1dJXsHF3kowoHCIZ-x002uTObKGMw5I6yy0T6vUkryiU/edit?usp=sharing) 
+- [Timesheet](https://docs.google.com/spreadsheets/d/1dJXsHF3kowoHCIZ-x002uTObKGMw5I6yy0T6vUkryiU/edit?usp=sharing)
+
+### Sprint 1:
+- [Client Meeting Notes](https://docs.google.com/document/d/1rnDvy-J9P4LLmWhArj9_jK88GR9zHlzzvr66PJ88IZQ/edit?usp=sharing)
+- [PowerPoint](https://docs.google.com/presentation/d/1hQm6K4JT6_8Kl99qty4n2GjstrvuQ2J7gzIyzNmsQ6g/edit?usp=sharing)  
+
+
