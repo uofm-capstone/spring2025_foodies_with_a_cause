@@ -1,27 +1,51 @@
-# README
+# Produce Bridge Web App
+## Prerequisites:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby 3.1.2
+* Rails 7.0.7
+* Yarn 1.22+
+* Postgresql 12+
+* Node.js 14+
 
-Things you may want to cover:
+# Configuration
+## Environment Setup
+- In the project directory, install the required gems:
+```bash
+bundle install
+```
+- Install front end dependencies:
+```bash
+yarn install
+```
+- Install and compile front end assets:
+```bash
+bin/rails webpacker:istall
+```
+## Database Setup
+-  Create and set up the database:
+```bash
+rails db:create
+rails db:migrate
+```
+- Populate the database:
+```bash
+rails db:seed
+```
+## Running the Project
+- Run the app locally:
+```bash
+rails server
+```
+- Access the web app: [127.0.0.1:3000](http://127.0.0.1:3000)
+</br></br>
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
+TBF
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
 
-* ...
 # rails-demos-n-deets-2023-apps
 
 ## Team Documents  
