@@ -5,7 +5,6 @@
 * Rails 7.0.7
 * Yarn 1.22+
 * Postgresql 12+
-* Node.js 14+
 
 # Configuration
 ## Environment Setup
@@ -42,7 +41,7 @@ rails server
 TBF
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+* Database/MVC documentation
 
 * Deployment instructions
 
