@@ -46,9 +46,9 @@ The `products` table stores the products listed by users.
 -   **marketer** (`string`): The name of the marketer or brand associated with the product.
 -   **user_id** (`bigint`, **not null**): The ID of the user who created the product. This is a foreign key referencing the `users` table.
 -   **quantity** (`integer`): The available quantity of the product.
--   **food_type** (`string`): The category or type of the product (e.g., "vegetable", "snack").
--   **description** (`string`): A textual description of the product.
--   **hold** (`string`): A status indicating whether the product is on hold.
+-   **food_type** (`string`): The category or type of the product (e.g., "apples", "canned goods").
+-   **description** (`string`): A text description of the product.
+-   **hold** (`string`): A status indicating whether the product is on hold, usually represented in days remaining (e.g. "4 days")
 -   **created_at** (`datetime`, **not null**): The timestamp when the product was created.
 -   **updated_at** (`datetime`, **not null**): The timestamp when the product was last updated.
 
