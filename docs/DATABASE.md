@@ -1,3 +1,4 @@
+[Back to README](../README.md)
 # Database Schema Documentation
 
 ## Overview
@@ -146,9 +147,9 @@ The `users` table stores information about users of the application.
 
 ----------
 
-## Migrations and Versioning
+## Editing the Schema
 
-The schema file is auto-generated from the database's current state. To modify the schema, **ActiveRecord migrations** should be used. This ensures that schema changes are tracked and versioned.
+The schema file is auto-generated from the database's current state. To modify the schema, always use **ActiveRecord migrations** to be sure the schema changes are tracked and versioned.
 
 -   **Create New Migrations**: Use `rails generate migration` to create new migrations.
 -   **Run Migrations**: Use `rails db:migrate` to apply the changes to the database.
