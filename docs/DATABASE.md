@@ -1,11 +1,5 @@
 [Back to README](../README.md)
-# Database Schema Documentation
-
-## Overview
-
-This document provides an overview of the database schema for the Produce Bridge application. The schema is defined and managed using ActiveRecord migrations. This document describes the structure of the database, including the tables, their columns, relationships, and indexes.
-
-----------
+# Database Schema
 
 ## Table of Contents
 
@@ -14,8 +8,7 @@ This document provides an overview of the database schema for the Produce Bridge
 3.  User Notifications Table
 4.  Users Table
 5.  Relationships Between Tables
-6.  Indexes and Constraints
-7.  Migrations and Versioning
+6.  Editing the Schema
 
 ----------
 
@@ -138,14 +131,6 @@ The `users` table stores information about users of the application.
 
 ----------
 
-## Indexes and Constraints
-
--   **Indexes**:
-    -   Indexes are created on columns that are frequently queried (e.g., `sender_id`, `receiver_id`, `user_id`, and `message_id`) to speed up database lookups.
--   **Foreign Keys**:
-    -   Foreign keys enforce referential integrity between related tables (e.g., `user_id` in `products`, `user_notifications`, and `messages`).
-
-----------
 
 ## Editing the Schema
 
