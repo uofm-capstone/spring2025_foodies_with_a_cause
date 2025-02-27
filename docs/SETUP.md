@@ -12,7 +12,7 @@ yarn install
 ```
 - Install and compile front end assets:
 ```bash
-bin/rails webpacker:istall
+bin/rails webpacker:install
 ```
 ## Database Setup
 -  Create and set up the database:
