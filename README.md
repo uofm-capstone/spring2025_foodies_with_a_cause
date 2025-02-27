@@ -6,7 +6,7 @@
 * Yarn 1.22+
 * Postgresql 12+
 
-# Documentation
+## Documentation:
 **[Project Setup](docs/SETUP.md)**  
 
 **[Database Schema](docs/DATABASE.md)**
