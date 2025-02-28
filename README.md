@@ -9,8 +9,9 @@
 ## Documentation:
 **[Project Setup](docs/SETUP.md)**  
 
-**[Database Schema](docs/DATABASE.md)**
+**[Integrations and Dependencies](docs/INTEGRATIONS_AND_DEPENDENCIES.md)**  
 
+**[Database Schema](docs/DATABASE.md)**  
 
 TBF
 * How to run the test suite
