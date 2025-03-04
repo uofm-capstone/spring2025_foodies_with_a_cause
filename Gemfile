@@ -73,6 +73,8 @@ group :test do
   gem 'webdrivers'
 end
 
+# Admin Dashboard and Content Management System
+gem 'rails_admin', '~> 3.0'
 
 # Disconnects all connections to PostgreSQL db when running rails db:reset
 gem 'pgreset', group: %i[development test]
