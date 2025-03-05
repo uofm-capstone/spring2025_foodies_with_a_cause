@@ -30,3 +30,7 @@ TBF
 - [Sprint 2 PowerPoint](https://docs.google.com/presentation/d/1oUVSVruqjbTr0w7JDdiKnXV5gTHb1A24FN-XmMKcD9k/edit?usp=sharing)
 
 ### Formal Feedback Sprint 2:
+
+Zoey 
+- Feedback Received: https://docs.google.com/document/d/1bqyxbz58GqLg867TAtdcJ3SKIr6SRxfT3AE8l6RmpB0/edit?usp=sharing
+- Feedback Given: https://docs.google.com/document/d/1UgLT_ZOWkXmXBVO1pMGU03Vv06oN3tTjohiBYkXbovU/edit?usp=sharing
