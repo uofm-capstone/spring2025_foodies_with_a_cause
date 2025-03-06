@@ -32,8 +32,16 @@ TBF
 ### Formal Feedback Sprint 2:
 
 Zoey 
-- Feedback Received: https://docs.google.com/document/d/1bqyxbz58GqLg867TAtdcJ3SKIr6SRxfT3AE8l6RmpB0/edit?usp=sharing
-- Feedback Given: https://docs.google.com/document/d/1UgLT_ZOWkXmXBVO1pMGU03Vv06oN3tTjohiBYkXbovU/edit?usp=sharing
+- [Feedback Received:] (https://docs.google.com/document/d/1bqyxbz58GqLg867TAtdcJ3SKIr6SRxfT3AE8l6RmpB0/edit?usp=sharing) 
+- [Feedback Given:] (https://docs.google.com/document/d/1UgLT_ZOWkXmXBVO1pMGU03Vv06oN3tTjohiBYkXbovU/edit?usp=sharing)
 
 Ian
-- Feedback Document: https://docs.google.com/document/d/1mOw7n157-HAjHv0Ygya1_LNJpgXFAq4BNOGXU2Poobg/edit?tab=t.0
+- [Feedback Document:] (https://docs.google.com/document/d/1mOw7n157-HAjHv0Ygya1_LNJpgXFAq4BNOGXU2Poobg/edit?tab=t.0)
+
+Shrajanya
+- [Feedback Recieved:] (https://docs.google.com/document/d/1AUWq2F89tCPMrIMUM_l-w-VuwxtiGSgwpnnpi_YT5t4/edit?tab=t.0)
+- [Feedback Given:] (https://docs.google.com/document/d/18XKn5a28vSDqfPIeJjVPLgTAh5l2UA-nxcvcs8SE3o0/edit?tab=t.0)
+
+Miguel
+- ...
+- ...
