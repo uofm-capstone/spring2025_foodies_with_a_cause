@@ -84,6 +84,20 @@ quinn = User.create!(
   organization_type: "Food processors"
 )
 
+admin_user = User.create!(
+  email: "admin@email.com",
+  password: "password",
+  user_type: "Admin",
+  full_name: "Admin User",
+  phone_number: "901-555-5555",
+  contact_preference: "email",
+  location: "Admin Headquarters",
+  latitude: 35.1495,
+  longitude: -90.0490,
+  organization_type: "Individual (not associated with an organization)",
+  admin: true  # Set this user as an admin
+)
+
 # Seed Products associated with Users
 Product.create!(
   food_type: "Apples",
