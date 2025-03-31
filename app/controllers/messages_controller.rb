@@ -10,10 +10,10 @@ class MessagesController < ApplicationController
                   .where(sender: current_user, receiver: @receiver)
                   .or(Message.where(sender: @receiver, receiver: current_user))
                   .order(:created_at)
-  
+
     unread_messages = @messages.where(sender: @receiver, read: false)
     unread_messages.update_all(read: true)
-  
+
     respond_to do |format|
       format.html
       format.turbo_stream
@@ -31,8 +31,10 @@ class MessagesController < ApplicationController
   # Send a new message# app/controllers/messages_controller.rb
   def create
     @message = current_user.sent_messages.build(message_params.merge(receiver: @receiver))
-  
+
     if @message.save
+      MessageMailer.with(message: @message, receiver: @receiver).new_message_notification.deliver_now
+
       # Broadcast to the sender's view
       Turbo::StreamsChannel.broadcast_append_to(
         "chat_channel_#{current_user.id}",
@@ -40,7 +42,7 @@ class MessagesController < ApplicationController
         partial: "messages/message",
         locals: { message: @message, current_user_id: current_user.id }
       )
-  
+
       # Broadcast to the receiver's view
       Turbo::StreamsChannel.broadcast_append_to(
         "chat_channel_#{@receiver.id}",
@@ -48,7 +50,7 @@ class MessagesController < ApplicationController
         partial: "messages/message",
         locals: { message: @message, current_user_id: @receiver.id }
       )
-  
+
       respond_to do |format|
         format.turbo_stream
         format.html { redirect_to user_messages_path(@receiver), notice: 'Message sent.' }
@@ -59,11 +61,11 @@ class MessagesController < ApplicationController
       end
     end
   end
-  
-  
-  
-  
-  
+
+
+
+
+
 
   private
 
