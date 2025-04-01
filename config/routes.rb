@@ -31,4 +31,6 @@ Rails.application.routes.draw do
   
   # Stripe Routes
   get 'stripe_test/connection_test'
+  # stripe listen --forward-to localhost:3000/stripe/webhooks
+  post 'stripe/webhooks', to: 'stripe/webhooks#create'
 end
