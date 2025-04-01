@@ -28,4 +28,7 @@ Rails.application.routes.draw do
 
   # Product Routes
   resources :products, only: [:index, :show, :new, :create, :destroy]
+  
+  # Stripe Routes
+  get 'stripe_test/connection_test'
 end

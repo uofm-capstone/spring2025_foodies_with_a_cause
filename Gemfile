@@ -99,3 +99,5 @@ gem 'kaminari'
 gem "webpacker", "~> 5.4"
 
 gem 'stripe'
+
+gem 'dotenv-rails', groups: [:development, :test]
