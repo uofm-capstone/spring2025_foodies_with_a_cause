@@ -97,3 +97,5 @@ gem 'kaminari'
 
 
 gem "webpacker", "~> 5.4"
+
+gem 'stripe'
