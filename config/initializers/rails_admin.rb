@@ -1,6 +1,6 @@
 RailsAdmin.config do |config|
   config.asset_source = :webpacker
-
+  config.main_app_name = ["Produce Bridge Admin", ""]
   ### Popular gems integration
 
   ## == Devise ==
