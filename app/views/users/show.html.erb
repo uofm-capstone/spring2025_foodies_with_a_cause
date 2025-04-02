@@ -133,6 +133,11 @@
             <%= link_to "Edit Profile", edit_user_path(@user), class: "btn-primary" %>
         <% end %>
 
+        <!-- Manage Subscription button, visible only to the profile owner -->
+        <% if current_user == @user %>
+            <%= link_to "Manage Subscription", billing_portal_path, data: {turbo: 'false'}, class: "btn-primary" %>
+        <% end %>
+
         <!-- Profile Message Section -->
         <h2>Profile Message</h2>
         <div class="profile-message">

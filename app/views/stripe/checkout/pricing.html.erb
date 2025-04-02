@@ -1,0 +1,17 @@
+<h1>Choose Your Subscription Plan</h1>
+
+<div>
+    <% @prices.each do |price| %>
+        <div>
+            <h2><%= price.product.name %></h2>
+    
+            <p><%= number_to_currency(price.unit_amount / 100.0) %> / <%= price.recurring.interval %></p>
+    
+            <% if price.product.description.present? %>
+                <p><%= price.product.description %></p>
+            <% end %>
+    
+            <%= button_to 'Subscribe', checkout_path(price_id: price.id), data: {turbo: 'false'} %>
+        </div>
+    <% end %>
+</div>
