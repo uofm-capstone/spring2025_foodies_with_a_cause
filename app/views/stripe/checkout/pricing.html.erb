@@ -1,17 +1,19 @@
-<h1>Choose Your Subscription Plan</h1>
+<div class="pricing-container">
+    <h1>Choose Your Subscription Plan</h1>
 
-<div>
-    <% @prices.each do |price| %>
-        <div>
-            <h2><%= price.product.name %></h2>
-    
-            <p><%= number_to_currency(price.unit_amount / 100.0) %> / <%= price.recurring.interval %></p>
-    
-            <% if price.product.description.present? %>
-                <p><%= price.product.description %></p>
-            <% end %>
-    
-            <%= button_to 'Subscribe', checkout_path(price_id: price.id), data: {turbo: 'false'} %>
-        </div>
-    <% end %>
+    <div class="pricing-plans">
+        <% @prices.each do |price| %>
+            <div class="pricing-plan">
+                <h2><%= price.product.name %></h2>
+        
+                <div class="plan-price"><%= number_to_currency(price.unit_amount / 100.0) %> / <%= price.recurring.interval %></div>
+        
+                <% if price.product.description.present? %>
+                    <div class="plan-description"><%= price.product.description %></div>
+                <% end %>
+        
+                <%= button_to 'Subscribe', checkout_path(price_id: price.id), data: {turbo: 'false'}, class: 'btn-plan-subscribe' %>
+            </div>
+        <% end %>
+    </div>
 </div>
