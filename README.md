@@ -28,6 +28,7 @@ TBF
 - [Client Meeting Notes](https://docs.google.com/document/d/1rnDvy-J9P4LLmWhArj9_jK88GR9zHlzzvr66PJ88IZQ/edit?usp=sharing)
 - [Sprint 1 PowerPoint](https://docs.google.com/presentation/d/1hQm6K4JT6_8Kl99qty4n2GjstrvuQ2J7gzIyzNmsQ6g/edit?usp=sharing)
 - [Sprint 2 PowerPoint](https://docs.google.com/presentation/d/1oUVSVruqjbTr0w7JDdiKnXV5gTHb1A24FN-XmMKcD9k/edit?usp=sharing)
+- [Spring 3 PowerPoint](https://docs.google.com/presentation/d/1_jeRHJWTzHv9-ywIYHcph0_2OJndtafJgjKscUIAyKI/edit?usp=sharing)
 
 ### Formal Feedback Sprint 2:
 
