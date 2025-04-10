@@ -41,25 +41,15 @@ class Stripe::WebhooksController < ApplicationController
       customer = event.data.object
       user = User.find_by(email: customer.email)
       user.update(stripe_customer_id: customer.id)
-    end
-
-    if event.type == 'customer.subscription.deleted'
-      # handle subscription canceled automatically based
-      # upon your subscription settings. Or if the user cancels it.
-      # puts data_object
-      puts "Subscription canceled: #{event.id}"
-    end
-
-    if event.type == 'customer.subscription.updated'
-      # handle subscription updated
-      # puts data_object
-      puts "Subscription updated: #{event.id}"
-    end
-
-    if event.type == 'customer.subscription.created'
-      # handle subscription created
-      # puts data_object
-      puts "Subscription created: #{event.id}"
+    
+    when 'customer.subscription.deleted', 'customer.subscription.updated', 'customer.subscription.created'
+      subscription = event.data.object
+      user = User.find_by(stripe_customer_id: subscription.customer)
+      user.update(
+        plan: subscription.items.data[0].price.lookup_key,
+        subscription_status: subscription.status,
+        subscription_ends_at: Time.at(subscription.current_period_end).to_datetime
+      )
     end
 
     if event.type == 'customer.subscription.trial_will_end'
