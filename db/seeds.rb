@@ -84,6 +84,34 @@ quinn = User.create!(
   organization_type: "Food processors"
 )
 
+user1 = User.create!(
+  email: "user1@email.com",
+  password: "password",
+  full_name: "User One",
+  phone_number: "123-456-7890",
+  contact_preference: "email",
+  organization_type: "Farm",
+  user_type: "Donor",
+  location: "123 Farm Rd",
+  latitude: 35.1495,
+  longitude: -90.0490
+)
+
+user2 = User.create!(
+  email: "user2@email.com",
+  password: "password",
+  full_name: "User Two",
+  phone_number: "987-654-3210",
+  contact_preference: "text",
+  organization_type: "Food pantry / soup kitchen",
+  user_type: "Recipient",
+  location: "456 Pantry Blvd",
+  latitude: 35.1449,
+  longitude: -90.0510
+)
+
+
+
 admin_user = User.create!(
   email: "admin@email.com",
   password: "password",
@@ -98,7 +126,29 @@ admin_user = User.create!(
   admin: true  # Set this user as an admin
 )
 
+
+
 # Seed Products associated with Users
+
+Product.create!(
+  food_type: "Tomatoes",
+  quantity: 15,
+  marketer: "User 1 Inc.",
+  description: "Organic tomatoes!",
+  hold:"5 days",
+  user: user1
+)
+
+Product.create!(
+  food_type: "Canned Beans",
+  quantity: 36,
+  marketer: "User 2 Inc.",
+  description: "High-protein canned beans for community meals.",
+  hold:"80 days",
+  user: user2
+)
+
+
 Product.create!(
   food_type: "Apples",
   quantity: 5,

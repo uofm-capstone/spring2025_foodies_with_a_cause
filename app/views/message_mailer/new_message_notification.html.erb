@@ -1,14 +1,19 @@
 
 <p>Hello <%= @receiver.full_name %>,</p>
 
-<p>You’ve received a new message on <strong>Produce Bridge</strong>!</p>
+<p>You have <strong><%= @messages.count %></strong> unread message<%= 's' if @messages.count > 1 %> on <strong>Produce Bridge</strong>!</p>
 
-<p><strong>Message:</strong></p>
-<blockquote>
-  <%= @message.content %>
-</blockquote>
+<% @messages.each do |message| %>
+  <p><strong>From:</strong> <%= message.sender.full_name %></p>
+  <p><strong>Message:</strong> <%= message.content %></p>
+  <br>
+<% end %>
 
-<p>You can log in to your account to reply.</p>
+<p>You can view and reply to your messages here:</p>
+
+<p>
+  <%= link_to "Go to Inbox", inbox_url %>
+</p>
 
 <p>Thanks,<br>
 The Produce Bridge Team</p>
