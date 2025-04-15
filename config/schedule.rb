@@ -1,17 +1,13 @@
 
-# config/schedule.rb
 
-# Use this file to easily define all of your cron jobs.
+set :output, {
+  standard: 'log/cron_log.log',
+  error: 'log/cron_error_log.log'
+}
 
-# Example:
-# set :output, "log/cron.log"
+set :environment, 'development'
 
-# config/schedule.rb
 
-# config/schedule.rb
-
-set :environment, "development"
-
-every 1.day, at: "6:28 pm" do
-  command "/Users/shrajanya020/COMP-4882/spring2025_foodies_with_a_cause/lib/tasks/launch.sh"
+every 1.day, at: '2:43 pm' do
+  command "cd #{path} && bin/rails runner 'MessageDigestJob.perform_now'"
 end
