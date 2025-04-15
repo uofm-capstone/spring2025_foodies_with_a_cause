@@ -13,13 +13,17 @@
 #  longitude              :float
 #  organization_type      :string           default(""), not null
 #  phone_number           :string           default(""), not null
+#  plan                   :string
 #  profile_message        :text
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  subscription_ends_at   :datetime
+#  subscription_status    :string
 #  user_type              :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  stripe_customer_id     :string
 #
 # Indexes
 #

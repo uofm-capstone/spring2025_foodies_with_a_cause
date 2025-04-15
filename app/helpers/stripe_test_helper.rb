@@ -1,0 +1,2 @@
+module StripeTestHelper
+end

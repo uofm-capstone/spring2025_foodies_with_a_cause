@@ -28,4 +28,14 @@ Rails.application.routes.draw do
 
   # Product Routes
   resources :products, only: [:index, :show, :new, :create, :destroy]
+  
+  # Stripe Routes
+  get 'stripe_test/connection_test'
+  # stripe listen --forward-to localhost:3000/stripe/webhooks
+  post 'stripe/webhooks', to: 'stripe/webhooks#create', as: 'stripe_webhooks'
+  get 'pricing', to: 'stripe/checkout#pricing', as: 'pricing'
+  post 'stripe/checkout', to: 'stripe/checkout#checkout', as: 'checkout'
+  get 'checkout/success', to: 'stripe/checkout#success', as: 'checkout_success'
+  get 'checkout/cancel', to: 'stripe/checkout#cancel', as: 'checkout_cancel'
+  get 'stripe/billing_portal', to: 'stripe/billing_portal#create', as: 'billing_portal'
 end
