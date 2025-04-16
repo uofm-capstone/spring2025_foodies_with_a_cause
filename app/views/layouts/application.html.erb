@@ -57,6 +57,11 @@
         <li class="nav-item">
           <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
         </li>
+        <% if current_user.admin? %>
+          <li class="nav-item">
+            <%= link_to "Admin Dashboard", "/admin", class: "nav-link text-danger" %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-link nav-button" %>
         </li>
