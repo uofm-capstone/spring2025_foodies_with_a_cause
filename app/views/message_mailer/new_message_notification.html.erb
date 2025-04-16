@@ -1,6 +1,8 @@
 
 <p>Hello <%= @receiver.full_name %>,</p>
 
+<br>
+
 <p>You have <strong><%= @messages.count %></strong> unread message<%= 's' if @messages.count > 1 %> on <strong>Produce Bridge</strong>!</p>
 
 <% @messages.each do |message| %>
@@ -13,7 +15,10 @@
 
 <p>
   <%= link_to "Go to Inbox", inbox_url %>
+  <br>
 </p>
+
+<br>
 
 <p>Thanks,<br>
 The Produce Bridge Team</p>
