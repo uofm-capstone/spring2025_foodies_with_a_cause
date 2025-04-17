@@ -180,6 +180,17 @@
             </tbody>
         </table>
 
+        <h2>Email Preferences</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Summary Email Time</th>
+                    <td><%= @user.summary_email_time.present? ? @user.summary_email_time : "Not set" %></td>
+                </tr>
+            </tbody>
+        </table>
+
+
         <!-- Table for contact information -->
         <h2>Contact Information</h2>
         <table>

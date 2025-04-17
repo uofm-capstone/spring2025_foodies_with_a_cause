@@ -37,6 +37,13 @@ class UsersController < ApplicationController
 
   def user_params
     # Permit the profile_message and other attributes for updating
-    params.require(:user).permit(:full_name, :phone_number, :location, :profile_message, :organization_type, :contact_preference)
+    params.require(:user).permit(
+      :full_name,
+      :phone_number,
+      :location,
+      :profile_message,
+      :organization_type,
+      :contact_preference,
+      :summary_email_time)
   end
 end
