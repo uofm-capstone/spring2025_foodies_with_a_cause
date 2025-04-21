@@ -47,6 +47,7 @@ class Stripe::WebhooksController < ApplicationController
       user = User.find_by(stripe_customer_id: subscription.customer)
       user.update(
         plan: subscription.items.data[0].price.lookup_key,
+        payment_amount: subscription.items.data[0].price.unit_amount,
         subscription_status: subscription.status,
         subscription_ends_at: Time.at(subscription.current_period_end).to_datetime
       )
