@@ -1,8 +1,8 @@
 RailsAdmin.config do |config|
   config.asset_source = :webpacker
   config.main_app_name = ["Produce Bridge Admin", ""]
-  ### Popular gems integration
 
+  ### Gem Integration
   ## == Devise ==
    config.authenticate_with do
      warden.authenticate! scope: :user
@@ -13,7 +13,7 @@ RailsAdmin.config do |config|
      # Redirect non-admin users to the root path
      redirect_to main_app.root_path unless current_user&.admin?
   end
-
+  
   ## == CancanCan ==
   # config.authorize_with :cancancan
 
