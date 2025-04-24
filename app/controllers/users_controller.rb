@@ -44,6 +44,8 @@ class UsersController < ApplicationController
       :profile_message,
       :organization_type,
       :contact_preference,
-      :summary_email_time)
+      :summary_email_time,
+      :instant_email,
+      :summary_email)
   end
 end

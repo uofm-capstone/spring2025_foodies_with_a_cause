@@ -30,12 +30,17 @@ class MessagesController < ApplicationController
                             .order(created_at: :desc)
   end
 
+
   # Send a new message
   def create
     @message = current_user.sent_messages.build(message_params.merge(receiver: @receiver))
 
     if @message.save
-      # ❌ Email sending handled by scheduled rake task, not here
+      # Send instant email if receiver has it enabled
+      if @receiver.instant_email
+        MessageMailer.with(messages: [@message], receiver: @receiver).new_message_notification.deliver_now
+      end
+
       # ✅ Real-time broadcasting still works
       Turbo::StreamsChannel.broadcast_append_to(
         "chat_channel_#{current_user.id}",
