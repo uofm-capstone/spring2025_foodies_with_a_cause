@@ -12,6 +12,7 @@
 #  location               :string           default(""), not null
 #  longitude              :float
 #  organization_type      :string           default(""), not null
+#  payment_amount         :integer
 #  phone_number           :string           default(""), not null
 #  plan                   :string
 #  profile_message        :text
