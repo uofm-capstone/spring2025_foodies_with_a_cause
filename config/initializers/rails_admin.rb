@@ -13,6 +13,8 @@ RailsAdmin.config do |config|
      # Redirect non-admin users to the root path
      redirect_to main_app.root_path unless current_user&.admin?
   end
+
+  config.excluded_models << 'UserNotification'
   
   ## == CancanCan ==
   # config.authorize_with :cancancan
