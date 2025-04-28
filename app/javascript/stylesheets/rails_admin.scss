@@ -34,3 +34,6 @@ body.rails_admin .sidebar.btn-toggle-nav .btn-toggle-nav > li > a.active,
 body.rails_admin .sidebar.btn-toggle-nav .btn-toggle-nav > li > a:hover {
   background-color: #2e8b57 !important;
 }
+.nav-tabs .nav-item.dashboard_root_link {
+  display: none !important;
+}
