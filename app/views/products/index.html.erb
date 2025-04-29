@@ -126,8 +126,6 @@
 
     </style>
 
-    <!-- Google Maps JavaScript API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dTtwwEAGoN92cz3JOxv63Zn1ef1Mwdw&callback=initMap" async defer></script>
 </head>
 <body>
 
@@ -142,10 +140,13 @@
         </div>
     <% end %>
 
-    <!-- New Product Button -->
-    <p>
-        <%= link_to "Submit New Product", new_product_path, class: 'new-btn' %>
+
+     <p>
+    <%= link_to "Submit New Product", new_product_path, class: 'new-btn' %>
     </p>
+
+
+    <!-- New Product Button -->
 
     <!-- Products Table -->
     <table class="table">
@@ -158,6 +159,7 @@
                 <th>Description</th>
             </tr>
         </thead>
+
 
         <tbody>
             <% if @products.empty? %>
@@ -178,46 +180,51 @@
         </tbody>
     </table>
 
+
     <!-- Pagination Links -->
     <div class="pagination">
         <%= paginate @products %>
     </div>
 
-    <!-- Google Map -->
+    <!-- Location header and map -->
+    <h2 class="location-header">Product Location</h2>
     <div id="map"></div>
+    </section>
+</div>
 
-    <script>
-        function initMap() {
-            const memphis = { lat: 35.1495, lng: -90.0490 };
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 11,
-                center: memphis
-            });
+<div id="map" style="height: 400px; width: 100%; margin-top: 20px;"></div>
 
-            const products = <%= raw @products.to_json(only: [:id, :marketer], include: { user: { only: [:latitude, :longitude, :location] } }) %>;
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Initialize the map
+    var map = L.map('map').setView([<%= current_user.latitude || 0 %>, <%= current_user.longitude || 0 %>], 12);
 
-            products.forEach(product => {
-                if (product.user.latitude && product.user.longitude) {
-                    const position = {
-                        lat: product.user.latitude,
-                        lng: product.user.longitude
-                    };
+    // Load map tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
 
-                    const marker = new google.maps.Marker({
-                        position: position,
-                        map: map,
-                        title: product.marketer
-                    });
+    // Add current user's marker
+    <% if current_user.latitude.present? && current_user.longitude.present? %>
+      L.marker([<%= current_user.latitude %>, <%= current_user.longitude %>], {icon: L.icon({iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'})})
+        .addTo(map)
+        .bindPopup("You are here")
+        .openPopup();
+    <% end %>
 
-                    marker.addListener("click", () => {
-                        window.location.href = "/products/" + product.id;
-                    });
-                }
-            });
-        }
+    // Add markers for each product's seller
+    <% @products.each do |product| %>
+      <% if product.user.latitude.present? && product.user.longitude.present? %>
+        L.marker([<%= product.user.latitude %>, <%= product.user.longitude %>])
+          .addTo(map)
+          .bindPopup("<%= j product.marketer %>: <%= j product.food_type %>");
+      <% end %>
+    <% end %>
+  });
+</script>
 
-        window.onload = initMap;
-    </script>
 </body>
 </html>

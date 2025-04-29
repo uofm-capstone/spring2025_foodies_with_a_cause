@@ -84,6 +84,7 @@ GEM
       rake (>= 10.4, < 14.0)
     autoprefixer-rails (10.4.19.0)
       execjs (~> 2)
+    base64 (0.2.0)
     bcrypt (3.1.20)
     bindex (0.8.1)
     bootsnap (1.18.4)
@@ -121,6 +122,9 @@ GEM
     erubi (1.13.0)
     execjs (2.10.0)
     ffi (1.17.0)
+    geocoder (1.8.5)
+      base64 (>= 0.1.0)
+      csv (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -314,6 +318,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  geocoder
   importmap-rails
   jbuilder
   kaminari

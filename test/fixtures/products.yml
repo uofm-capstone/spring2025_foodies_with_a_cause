@@ -6,6 +6,10 @@
 #  description :string
 #  food_type   :string
 #  hold        :string
+#  latitude    :float
+#  location    :string
+#  longitdue   :float
+#  longitude   :float
 #  marketer    :string
 #  quantity    :integer
 #  created_at  :datetime         not null

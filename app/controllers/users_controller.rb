@@ -22,8 +22,10 @@ class UsersController < ApplicationController
   def update
     # Update action to handle the form submission
     if @user.update(user_params)
+      puts "Updated lat: #{@user.latitude}, lng:#{@user.longitude}"
       redirect_to @user, notice: 'Profile updated successfully!'
     else
+      puts @user.errors.full_message
       flash.now[:error] = 'There was an issue updating your profile.'
       render :edit, status: :unprocessable_entity
     end

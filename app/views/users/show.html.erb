@@ -199,33 +199,51 @@
             </tbody>
         </table>
 
+        <p> </p>
+
+        <!-- Table for contact information -->
+        <h2> Location (i.e. XXXX Street, Zipcode) </h2>
+        <table>
+            <tbody>
+                <tr>
+                <%= form_with model: @user, local: true do |f| %>
+                    <div class="form-section">
+                        <div class="field">
+                        <%= f.label :location, "Update Location:   " %>
+                            <%= f.text_field :location %>
+                        <p>If Location Doesn't Show, Refresh Page</p>
+                        </div>
+                <% end %>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+
         <!-- Location header and map -->
         <h2 class="location-header">Our Location</h2>
         <div id="map"></div>
     </div>
 
-    <!-- Google Maps JavaScript API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dTtwwEAGoN92cz3JOxv63Zn1ef1Mwdw&callback=initMap" async defer></script>
-    <script>
-        function initMap() {
-            const userLocation = {
-                lat: <%= @user.latitude || 40.73061 %>,
-                lng: <%= @user.longitude || -73.935242 %>
-            };
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <% if @user.latitude.present? && @user.longitude.present? %>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var map = L.map('map').setView([<%= @user.latitude %>, <%= @user.longitude %>], 13);
 
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: userLocation,
-                zoom: 12
-            });
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+                }).addTo(map);
 
-            new google.maps.Marker({
-                position: userLocation,
-                map: map,
-                title: "<%= @user.full_name %>'s Location"
-            });
-        }
+                L.marker([<%= @user.latitude %>, <%= @user.longitude %>]).addTo(map)
+                .bindPopup("<%= j @user.full_name %>")
+                .openPopup();
+                    });
+        </script>
 
-        window.onload = initMap;
-    </script>
+    <% end %>
 </body>
 </html>
