@@ -13,16 +13,21 @@
 #  location               :string           default(""), not null
 #  longitude              :float
 #  organization_type      :string           default(""), not null
+#  payment_amount         :integer
 #  phone_number           :string           default(""), not null
+#  plan                   :string
 #  profile_message        :text
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  summary_email          :boolean          default(FALSE)
 #  summary_email_time     :string
+#  subscription_ends_at   :datetime
+#  subscription_status    :string
 #  user_type              :string           default(""), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  stripe_customer_id     :string
 #
 # Indexes
 #
@@ -59,4 +64,19 @@ class User < ApplicationRecord
   # Validations for coordinates
   validates :latitude, numericality: true, allow_nil: true
   validates :longitude, numericality: true, allow_nil: true
+
+  after_create do
+    # Format phone number to E.164 format for Stripe
+    formatted_phone = nil
+    if phone_number.present?
+      digits_only = phone_number.gsub(/\D/, '')
+      formatted_phone = "+1#{digits_only}"
+    end
+
+    Stripe::Customer.create(
+      email: email,
+      name: full_name,
+      phone: formatted_phone
+    )
+  end
 end

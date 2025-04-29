@@ -1,0 +1,50 @@
+<div class="row">
+  <!-- Monthly Recurring Revenue -->
+  <div class="col-md-6">
+    <div class="panel panel-info">
+      <div class="panel-heading"><strong>Monthly Recurring Revenue (MRR)</strong></div>
+      <div class="panel-body">
+        <% active_users = User.where(subscription_status: 'active') %>
+        <% mrr = active_users.sum { |u| u.payment_amount.to_f / 100 } %>
+
+        <h2><%= number_to_currency(mrr, precision: 2) %></h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Total Subscriber Count  -->
+  <div class="col-md-6">
+    <div class="panel panel-success">
+      <div class="panel-heading"><strong>Active Subscribers</strong></div>
+      <div class="panel-body">
+        <h2><%= active_users.count %></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Plans And Subscribers -->
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div class="panel-heading"><strong>Subscribers by Plan</strong></div>
+      <div class="panel-body">
+        <ul>
+          <% grouped = active_users.group_by(&:plan) %>
+          <% sorted = grouped.sort_by { |plan, users| users.first.payment_amount } %>
+
+          <% sorted.each do |plan, users| %>
+            <% plan_name = plan.present? ? plan.tr('_', ' ').titleize : 'Unspecified' %>
+            <% price = users.first.payment_amount.to_f / 100 rescue 0 %>
+            <% total = users.sum { |u| u.payment_amount.to_f / 100 } %>
+            <li>
+              <strong><%= plan_name %>:</strong>
+              <%= users.count %> users @ <%= number_to_currency(price) %>/mo —
+              <em>Total: <%= number_to_currency(total) %></em>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
