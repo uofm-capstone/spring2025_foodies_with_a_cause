@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_17_210327) do
+
+ActiveRecord::Schema[7.0].define(version: 2025_04_24_060600) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,6 +67,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_17_210327) do
     t.float "longitude"
     t.text "profile_message"
     t.boolean "admin", default: false, null: false
+    t.string "summary_email_time"
+    t.boolean "instant_email", default: false
+    t.boolean "summary_email", default: false
     t.string "stripe_customer_id"
     t.string "plan"
     t.string "subscription_status"

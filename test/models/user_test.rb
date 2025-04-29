@@ -8,6 +8,7 @@
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  full_name              :string           default(""), not null
+#  instant_email          :boolean          default(FALSE)
 #  latitude               :float
 #  location               :string           default(""), not null
 #  longitude              :float
@@ -19,6 +20,8 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  summary_email          :boolean          default(FALSE)
+#  summary_email_time     :string
 #  subscription_ends_at   :datetime
 #  subscription_status    :string
 #  user_type              :string           default(""), not null
