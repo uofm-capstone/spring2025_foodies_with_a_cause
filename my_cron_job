@@ -1,0 +1,4 @@
+0 20 * * * /bin/bash -l -c 'cd /Users/shrajanya020/COMP-4882/spring2025_foodies_with_a_cause && RAILS_ENV=development bundle exec rake messages:send_digest --silent'
+
+## [message] Above is your schedule file converted to cron syntax; your crontab file was not updated.
+## [message] Run `whenever --help' for more options.

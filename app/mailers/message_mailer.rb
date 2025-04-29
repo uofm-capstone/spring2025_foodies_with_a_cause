@@ -1,11 +1,12 @@
+
 class MessageMailer < ApplicationMailer
   def new_message_notification
-    @message = params[:message]
     @receiver = params[:receiver]
+    @messages = Array(params[:messages] || params[:message])
 
     mail(
       to: @receiver.email,
-      subject: "You have a new message on Produce Bridge!"
+      subject: @messages.length == 1 ? "New message from #{@messages.first.sender.full_name}" : "Daily summary of unread messages"
     )
   end
 end

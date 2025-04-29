@@ -1,3 +1,4 @@
+
 class MessagesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_receiver, only: [:index, :create]
@@ -6,6 +7,7 @@ class MessagesController < ApplicationController
   # Show messages between current user and receiver
   def index
     @current_user_id = current_user.id
+
     @messages = Message
                   .where(sender: current_user, receiver: @receiver)
                   .or(Message.where(sender: @receiver, receiver: current_user))
@@ -28,14 +30,18 @@ class MessagesController < ApplicationController
                             .order(created_at: :desc)
   end
 
-  # Send a new message# app/controllers/messages_controller.rb
+
+  # Send a new message
   def create
     @message = current_user.sent_messages.build(message_params.merge(receiver: @receiver))
 
     if @message.save
-      MessageMailer.with(message: @message, receiver: @receiver).new_message_notification.deliver_now
+      # Send instant email if receiver has it enabled
+      if @receiver.instant_email
+        MessageMailer.with(messages: [@message], receiver: @receiver).new_message_notification.deliver_now
+      end
 
-      # Broadcast to the sender's view
+      # ✅ Real-time broadcasting still works
       Turbo::StreamsChannel.broadcast_append_to(
         "chat_channel_#{current_user.id}",
         target: "new_messages",
@@ -43,7 +49,6 @@ class MessagesController < ApplicationController
         locals: { message: @message, current_user_id: current_user.id }
       )
 
-      # Broadcast to the receiver's view
       Turbo::StreamsChannel.broadcast_append_to(
         "chat_channel_#{@receiver.id}",
         target: "new_messages",
@@ -62,20 +67,12 @@ class MessagesController < ApplicationController
     end
   end
 
-
-
-
-
-
   private
 
-
-  # Strong parameters for message creation
   def message_params
     params.require(:message).permit(:content)
   end
 
-  # Set the receiver for the message
   def set_receiver
     @receiver = User.find_by(id: params[:user_id])
 

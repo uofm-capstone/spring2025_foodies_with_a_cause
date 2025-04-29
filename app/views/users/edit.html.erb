@@ -133,6 +133,25 @@
                 </div>
 
                 <div class="field">
+                    <%= f.label :summary_email_time, "Preferred Summary Email Time (e.g., 5:00 pm)" %>
+                    <%= f.text_field :summary_email_time, placeholder: "HH:MM AM/PM" %>
+                </div>
+
+                <div class="field">
+                    <strong>Email Preferences</strong><br>
+
+                    <label style="margin-right: 20px;">
+                        <%= f.check_box :instant_email %> Instant Emails
+                    </label>
+
+                    <label>
+                        <%= f.check_box :summary_email %> Daily Summary Email
+                    </label>
+                </div>
+
+
+
+                <div class="field">
                     <%= f.label :profile_message, "Profile Message" %>
                     <%= f.text_area :profile_message, rows: 3, placeholder: "Write a message for your profile page" %>
                 </div>

@@ -1,0 +1,18 @@
+<h1>Stripe Connection Test</h1>
+
+<% if @error_message %>
+  <div style="color: red;">
+    <h2>Connection Error</h2>
+    <p><%= @error_message %></p>
+  </div>
+<% elsif @test_successful %>
+  <div style="color: green;">
+    <h2>Connection Successful!</h2>
+    <p>Your Rails application is successfully connected to the Stripe API.</p>
+  </div>
+<% else %>
+  <div style="color: orange;">
+    <h2>Connection Status Unknown</h2>
+    <p>API Keys set: <%= @api_keys_set ? "Yes" : "No" %></p>
+  </div>
+<% end %>
