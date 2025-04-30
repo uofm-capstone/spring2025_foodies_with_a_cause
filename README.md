@@ -70,8 +70,8 @@ Miguel
 ### Formal Feedback Sprint 4:
 
 Zoey 
-- [Feedback Received](---)
-- [Feedback Given](---)
+- [Feedback Received](https://docs.google.com/document/d/1ZbvzwUhTL8_ZvGlmD8sHMZed83z3rcdchU_ff-GadT0/edit?usp=sharing)
+- [Feedback Given](https://docs.google.com/document/d/167yz-LqjzU5cgszqOa86d2RNS4JFInPg0KRml4UGuOE/edit?usp=sharing)
 
 Ian
 - [Feedback Recieved](---)
