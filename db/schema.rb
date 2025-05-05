@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema[7.0].define(version: 2025_04_24_060600) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_01_164836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,10 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_24_060600) do
     t.string "food_type"
     t.string "description"
     t.string "hold"
+    t.float "longitdue"
+    t.string "location"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 

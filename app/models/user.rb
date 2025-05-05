@@ -65,6 +65,15 @@ class User < ApplicationRecord
   validates :latitude, numericality: true, allow_nil: true
   validates :longitude, numericality: true, allow_nil: true
 
+  geocoded_by :location  # location is a text address
+  after_validation :geocode_with_log, if: :will_save_change_to_location?
+
+def geocode_with_log
+  Rails.logger.debug "Running geocode for #{self.location}"
+  geocode
+  Rails.logger.debug "Result: #{self.latitude}, #{self.longitude}"
+end
+
   after_create do
     # Format phone number to E.164 format for Stripe
     formatted_phone = nil
@@ -79,4 +88,5 @@ class User < ApplicationRecord
       phone: formatted_phone
     )
   end
+
 end

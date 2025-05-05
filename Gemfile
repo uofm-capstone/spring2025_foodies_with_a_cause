@@ -100,6 +100,7 @@ gem 'kaminari'
 
 gem "webpacker", "~> 5.4"
 
+gem 'geocoder'
 gem 'stripe'
 
 gem 'dotenv-rails', groups: [:development, :test]

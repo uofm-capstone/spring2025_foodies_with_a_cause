@@ -12,6 +12,7 @@
   <strong>Name:</strong> <%= @product.food_type %><br>
   <strong>Description:</strong> <%= @product.description %><br>
   <strong>Price:</strong> <%= @product.hold %><br>
+  <strong>Location:</strong> <span id="distance-info">Distance</span><br>
 </p>
 
   <h2>Seller Information</h2>
@@ -27,54 +28,11 @@
     <a id="open-google-maps-btn" href="#" target="_blank" class="btn btn-secondary" style="display: none;">Open in Google Maps</a>
   </p>
 
-  <!-- Hidden Map Container -->
-  <div id="map" style="width: 100%; height: 400px; display: none; margin-top: 20px;"></div>
 
-  <script>
-    // Initialize map with product's location
-    function initMap() {
-      const productLocation = { lat: <%= @product.user.latitude %>, lng: <%= @product.user.longitude %> };
 
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 14,
-        center: productLocation
-      });
 
-      new google.maps.Marker({
-        position: productLocation,
-        map: map,
-        title: "<%= @product.food_type %>"
-      });
-    }
 
-    // Toggle map visibility and show Google Maps link on button click
-    document.getElementById("get-directions-btn").addEventListener("click", function() {
-      const mapDiv = document.getElementById("map");
-      const openGoogleMapsBtn = document.getElementById("open-google-maps-btn");
-
-      if (mapDiv.style.display === "none") {
-        mapDiv.style.display = "block";
-        openGoogleMapsBtn.style.display = "inline-block";
-
-        // Initialize map if not already loaded
-        if (!mapDiv.dataset.loaded) {
-          initMap();
-          mapDiv.dataset.loaded = true; // Prevent reloading the map
-        }
-
-        // Set the Google Maps directions link
-        const userLatitude = "<%= @product.user.latitude %>";
-        const userLongitude = "<%= @product.user.longitude %>";
-        openGoogleMapsBtn.href = `https://www.google.com/maps/dir/?api=1&destination=${userLatitude},${userLongitude}&travelmode=driving`;
-
-      } else {
-        mapDiv.style.display = "none";
-        openGoogleMapsBtn.style.display = "none";
-      }
-    });
-  </script>
-
-  <!-- Load Google Maps API -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0dTtwwEAGoN92cz3JOxv63Zn1ef1Mwdw&callback=initMap" async defer></script>
+   
+  
 </body>
 </html>

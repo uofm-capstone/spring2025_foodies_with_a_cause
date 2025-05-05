@@ -27,9 +27,13 @@ class ProductsController < ApplicationController
 
   def create
     @product = current_user.products.build(product_params)
+    @product.latitude = current_user.latitude
+    @product.longitude = current_user.longitude
+    
     if @product.save
-      flash[:success] = 'New Product added to the Market Hub!'
-      redirect_to products_url
+      redirect_to @product, notice: "New Product added to the Market Hub!"
+      #flash[:success] = 'New Product added to the Market Hub!'
+      #redirect_to products_url
     else
       flash.now[:error] = 'Product addition failed'
       render :new, status: :unprocessable_entity
@@ -37,6 +41,12 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
+    @current_user = current_user
+
+    puts "Product ID: #{@product.id}"
+    puts "User Latitude: #{@product.user.latitude}"
+    puts "User Longitude: #{@product.user.longitude}"
   end
 
   def destroy
